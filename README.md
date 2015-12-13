@@ -6,4 +6,4 @@ Sample uses
 x = Xex('path\to\file\file.xex')
 print(hex(x.entry_point))
 ```
-Research used from [https://github.com/benvanik/Xenia]
+Research used from https://github.com/benvanik/Xenia
