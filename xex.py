@@ -1,19 +1,42 @@
+import const
 from struct import *
 from Crypto.Cipher import AES
+
+const.XEX_COMPRESSION = [
+    'XEX_COMPRESSION_NONE',
+    'XEX_COMPRESSION_BASIC',
+    'XEX_COMPRESSION_NORMAL',
+    'XEX_COMPRESSION_DELTA' ]
+
+const.XEX_COMPRESSION_NONE = 0
+const.XEX_COMPRESSION_BASIC = 1
+const.XEX_COMPRESSION_NORMAL = 2
+const.XEX_COMPRESSION_DELTA = 3
+
+const.XEX_ENCRYPTION = [
+    'XEX_ENCRYPTION_NONE',
+    'XEX_ENCRYPTION_NORMAL' ]
+
+const.XEX_ENCRYPTION_NONE = 0
+const.XEX_ENCRYPTION_NORMAL = 1
+
+const.XEX_HEADER_BASE_REFERENCE = 0x00000405
+const.XEX_HEADER_DEFAULT_STACK_SIZE = 0x00020200
+const.XEX_HEADER_DEFAULT_HEAP_SIZE = 0x00020401
+const.XEX_HEADER_DELTA_PATCH_DESCRIPTOR = 0x000005FF
+const.XEX_HEADER_ENTRY_POINT = 0x00010100
+const.XEX_HEADER_EXECUTION_INFO = 0x00040006
+const.XEX_HEADER_FILE_FORMAT_INFO = 0x000003FF
+const.XEX_HEADER_GAME_RATINGS = 0x00040310
+const.XEX_HEADER_IMAGE_BASE_ADDRESS = 0x00010201
+const.XEX_HEADER_ORIGINAL_PE_NAME = 0x000183FF
+const.XEX_HEADER_RESOURCE_INFO = 0x000002FF
+const.XEX_HEADER_SYSTEM_FLAGS = 0x00030000
+const.XEX_HEADER_TLS_INFO = 0x00020104
 
 class Xex:
 
     RETAIL_KEY = b'\x20\xB1\x85\xA5\x9D\x28\xFD\xC3\40\x58\x3F\xBB\x08\x96\xBF\x91'
-
-    XEX_COMPRESSION = [
-        'XEX_COMPRESSION_NONE',
-        'XEX_COMPRESSION_BASIC',
-        'XEX_COMPRESSION_NORMAL',
-        'XEX_COMPRESSION_DELTA' ]
-
-    XEX_ENCRYPTION = [
-        'XEX_ENCRYPTION_NONE',
-        'XEX_ENCRYPTION_NORMAL' ]
 
     def __init__(self, filename):
         self.data_counter = 0
@@ -103,7 +126,7 @@ class Xex:
             self.data_counter += 8
 
     def base_reference_decode(self, header):
-        if self.key(header) == 0x00000405:  #XEX_HEADER_BASE_REFERENCE
+        if self.key(header) == const.XEX_HEADER_BASE_REFERENCE:
             pass
 
     def base_reference_reset(self):
@@ -113,7 +136,7 @@ class Xex:
         pass
 
     def default_heap_size_decode(self, header):
-        if self.key(header) == 0x00020401:  #XEX_HEADER_DEFAULT_HEAP_SIZE
+        if self.key(header) == const.XEX_HEADER_DEFAULT_HEAP_SIZE:
             self.exe_heap_size = unpack('>L', self.data[header[1]:header[1] + 4])[0]
 
     def default_heap_size_reset(self):
@@ -123,7 +146,7 @@ class Xex:
         print('XEX_HEADER_DEFAULT_HEAP_SIZE =',  self.exe_heap_size)
 
     def default_stack_size_decode(self,  header):
-        if self.key(header) == 0x00020200:  #XEX_HEADER_DEFAULT_STACK_SIZE
+        if self.key(header) == const.XEX_HEADER_DEFAULT_STACK_SIZE:
             self.exe_stack_size = unpack('>L', self.data[header[1]:header[1] + 4])[0]
 
     def default_stack_size_reset(self):
@@ -133,7 +156,7 @@ class Xex:
         print('XEX_HEADER_DEFAULT_STACK_SIZE =',  self.exe_stack_size)
 
     def delta_patch_descriptor_decode(self, header):
-        if self.key(header) == 0x000005FF:  #XEX_HEADER_DELTA_PATCH_DESCRIPTOR
+        if self.key(header) == const.XEX_HEADER_DELTA_PATCH_DESCRIPTOR:
             pass
 
     def delta_patch_descriptor_reset(self):
@@ -143,7 +166,7 @@ class Xex:
         pass
 
     def entry_point_decode(self,  header):
-        if self.key(header) == 0x00010100:  #XEX_HEADER_ENTRY_POINT
+        if self.key(header) == const.XEX_HEADER_ENTRY_POINT:
             self.entry_point = header[1]
 
     def entry_point_reset(self):
@@ -153,7 +176,7 @@ class Xex:
         print('XEX_HEADER_ENTRY_POINT =',  self.hex8(self.entry_point))
 
     def execution_info_decode(self, header):
-        if self.key(header) == 0x00040006:  #XEX_HEADER_EXECUTION_INFO
+        if self.key(header) == const.XEX_HEADER_EXECUTION_INFO:
             execution_info_string = '>L L L L B B B B L'
             self.media_id, self.version, self.base_version, self.title_id, self.platform, self.execution_table, \
             self.disk_number, self.disk_count, self.savegame_id = unpack(execution_info_string, self.data[header[1]:
@@ -183,16 +206,14 @@ class Xex:
         print('  SAVE_GAME_ID =',  self.savegame_id)
 
     def file_format_info_decode(self, header):
-        if self.key(header) == 0x000003FF:  #XEX_HEADER_FILE_FORMAT_INFO
+        if self.key(header) == const.XEX_HEADER_FILE_FORMAT_INFO:
             self.info_size, self.encryption_type, self.compression_type = unpack('> L H H ', self.data[header[1]:header[1] + 8])
-            if self.compression_type == 1:
-                #XEX_COMPRESSION_BASIC
+            if self.compression_type == const.XEX_COMPRESSION_BASIC:
                 self.block_cont = int((self.info_size - 8) / 8)
                 self.blocks = []
                 for i in range(self.block_cont):
                     self.blocks.append(unpack('> L L', self.data[header[1] + 8 + (i * 8): header[1] + 8 + (i * 8) + 8]))
-            elif self.compression_type == 2:
-                #XEX_COMPRESSION_NORMAL
+            elif self.compression_type == const.XEX_COMPRESSION_NORMAL:
                 self.window_size, self.block_size, self.block_hash = unpack('> L L 20s', self.data[header[1] + 8: header[1] + 36])
 
     def file_format_info_reset(self):
@@ -203,11 +224,11 @@ class Xex:
     def file_format_info_show(self):
         print('XEX_HEADER_FILE_FORMAT_INFO')
         print('  SIZE =', self.info_size)
-        print('  ENCRYPTION_TYPE =', self.encryption_type,  self.XEX_ENCRYPTION[self.encryption_type])
-        print('  COMPRESSION_TYPE =', self.compression_type, self.XEX_COMPRESSION[self.compression_type])
+        print('  ENCRYPTION_TYPE =', self.encryption_type,  const.XEX_ENCRYPTION[self.encryption_type])
+        print('  COMPRESSION_TYPE =', self.compression_type, const.XEX_COMPRESSION[self.compression_type])
 
     def game_ratings_decode(self, header):
-        if self.key(header) == 0x00040310:  #XEX_HEADER_GAME_RATINGS
+        if self.key(header) == const.XEX_HEADER_GAME_RATINGS:
             game_ratings_string = '> B B B B B B B B B B B B'
             self.esrb, self.pegi, self.pegifi, self.pegipt, self.bbfc, self.cero, self.usk, self.oflcau, \
             self.oflcnz, self.mrb, self.brazil, self.fpb = unpack(game_ratings_string,
@@ -243,7 +264,7 @@ class Xex:
         print('  FPB =',  self.fpb)
 
     def image_base_address_decode(self, header):
-        if self.key(header) == 0x00010201:  #XEX_HEADER_IMAGE_BASE_ADDRESS
+        if self.key(header) == const.XEX_HEADER_IMAGE_BASE_ADDRESS:
             self.base_image_address = header[1]
 
     def image_base_address_reset(self):
@@ -253,7 +274,7 @@ class Xex:
         print('XEX_HEADER_IMAGE_BASE_ADDRESS =',  self.hex8(self.base_image_address))
 
     def original_pe_name_decode(self, header):
-        if self.key(header) == 0x000183FF:  #XEX_HEADER_ORIGINAL_PE_NAME
+        if self.key(header) == const.XEX_HEADER_ORIGINAL_PE_NAME:
             name_length = unpack('>L', self.data[header[1]:header[1] + 4])[0]
             self.original_pe_name = self.data[header[1] + 4:header[1] + 4 + name_length - 1].decode()
 
@@ -264,7 +285,7 @@ class Xex:
         print('XEX_HEADER_ORIGINAL_PE_NAME =',  self.original_pe_name)
 
     def resource_info_decode(self, header):
-        if self.key(header) == 0x000002FF:  #XEX_HEADER_RESOURCE_INFO
+        if self.key(header) == const.XEX_HEADER_RESOURCE_INFO:
             self.resource_info_count = int((header[0] - 4) / 16)
             self.resource_infos = []
             for i in range(self.resource_info_count):
@@ -277,7 +298,7 @@ class Xex:
         print('XEX_HEADER_RESOURCE_INFO =',  self.resource_info_count)
 
     def system_flags_decode(self, header):
-        if self.key(header) == 0x00030000:  #XEX_HEADER_SYSTEM_FLAGS
+        if self.key(header) == const.XEX_HEADER_SYSTEM_FLAGS:
             self.system_flags = header[1]
 
     def system_flags_reset(self):
@@ -287,7 +308,7 @@ class Xex:
          print('XEX_HEADER_SYSTEM_FLAGS',  self.hex8(self.system_flags))
 
     def tls_info_decode(self, header):
-        if self.key(header) == 0x00020104:  #XEX_HEADER_TLS_INFO
+        if self.key(header) == const.XEX_HEADER_TLS_INFO:
             tls_string = '>L L L L'
             self.tls_slot_count, self.tls_raw_data_address, self.tls_data_size, self.tls_raw_data_size = unpack(
                 tls_string, self.data[header[1]:header[1] + calcsize(tls_string)])
