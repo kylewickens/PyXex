@@ -40,11 +40,12 @@ class Xex:
 
     def __init__(self, filename):
         self.data_counter = 0
-        self.optional_headers = []
-        self.sections = []
         if not filename:
             print('invalid xex provided')
             exit(1)
+
+        self.optional_headers_reset()
+        self.sections_reset()
 
         self.base_reference_reset()
         self.default_heap_size_reset()
@@ -63,7 +64,7 @@ class Xex:
         self.data = open(filename, 'rb').read()
 
         self.header_decode()
-        self.optional_headers_decoder()
+        self.optional_headers_decode()
 
         for optional_header in self.optional_headers:
             self.base_reference_decode(optional_header)
@@ -80,19 +81,8 @@ class Xex:
             self.system_flags_decode(optional_header)
             self.tls_info_decode(optional_header)
 
-        self.data_counter = self.cert_offset
-        loader_string = '> L L 256s L L L 20s L 20s 16s 16s L 20s L L L'
-        self.loader_header_size, self.loader_image_size, self.loader_rsa_sig, self.loader_unklength,\
-        self.loader_image_flags, self.loader_load_address, self.loader_section_digest, self.loader_import_table_count,\
-        self.loader_import_table_digest, self.loader_media_id, self.loader_file_key, self.loader_export_table,\
-        self.loader_header_digest, self.loader_game_regions, self.loader_media_flags, self.section_count = \
-            unpack(loader_string, self.data[self.data_counter:self.data_counter + calcsize(loader_string)])
-        self.data_counter += calcsize(loader_string)
-
-        section_string = '> L L 20s'
-        for section in range(self.section_count):
-            self.sections.append(unpack(section_string, self.data[self.data_counter:self.data_counter + calcsize(section_string)]))
-            self.data_counter += calcsize(section_string)
+        self.loader_decode()
+        self.sections_decode()
 
     def key(self, header):
         return header[0]
@@ -114,16 +104,61 @@ class Xex:
         print('  SIGNATURE =',  self.signature)
         print('  MODULE_FLAGS =',  self.hex8(self.module_flags))
         print('  EXE_OFFSET =',  self.hex8(self.exe_offset),  self.exe_offset)
-        print('  UNKNOWN =',  self.unk)
+        print('  UNK =',  self.unk)
         print('  CERT_OFFSET =',  self.hex8(self.cert_offset),  self.cert_offset)
         print('  OPTIONAL_HEADER_COUNT =',  self.header_count)
 
-    def optional_headers_decoder(self):
+    def loader_decode(self):
+        self.data_counter = self.cert_offset
+        loader_string = '> L L 256s L L L 20s L 20s 16s 16s L 20s L L L'
+        self.loader_header_size, self.loader_image_size, self.loader_rsa_sig, self.loader_unklength,\
+        self.loader_image_flags, self.loader_load_address, self.loader_section_digest, self.loader_import_table_count,\
+        self.loader_import_table_digest, self.loader_media_id, self.loader_file_key, self.loader_export_table,\
+        self.loader_header_digest, self.loader_game_regions, self.loader_media_flags, self.section_count = \
+            unpack(loader_string, self.data[self.data_counter:self.data_counter + calcsize(loader_string)])
+        self.data_counter += calcsize(loader_string)
+
+    def loader_show(self):
+        print('XEX_LOADER')
+        print('  HEADER_SIZE =', self.hex8(self.loader_header_size), self.loader_header_size)
+        print('  IMAGE_SIZE =', self.hex8(self.loader_image_size), self.loader_image_size)
+        print('  RSA_SIG =', self.loader_rsa_sig)
+        print('  UNK_LENGTH =', self.loader_unklength)
+        print('  IMAGE_FLAGS =', self.hex8(self.loader_image_flags))
+        print('  LOAD_ADDRESS =', self.hex8(self.loader_load_address))
+        print('  SECTION_DIGEST =', self.loader_section_digest)
+        print('  IMPORT_TABLE_COUNT =', self.loader_import_table_count)
+        print('  IMPORT_TABLE_DIGEST =',  self.loader_import_table_digest)
+        print('  MEDIA_ID =', self.loader_media_id)
+        print('  FILE_KEY =', self.loader_file_key)
+        print('  EXPORT_TABLE =', self.loader_export_table)
+        print('  HEADER_DIGEST =', self.loader_header_digest)
+        print('  GAME_REGIONS =', self.hex8(self.loader_game_regions))
+        print('  MEDIA_FLAGS =',  self.hex8(self.loader_media_flags))
+
+    def optional_headers_decode(self):
         optional_header_string = '>L L'
         for i in range(self.header_count):
             self.optional_headers.append(unpack(optional_header_string,
-                                                self.data[self.data_counter:self.data_counter+calcsize(optional_header_string)]))
+                 self.data[self.data_counter:self.data_counter+calcsize(optional_header_string)]))
             self.data_counter += 8
+
+    def optional_headers_reset(self):
+        self.optional_headers = []
+
+    def sections_decode(self):
+        section_string = '> L L 20s'
+        for section in range(self.section_count):
+            self.sections.append(unpack(section_string, self.data[self.data_counter:self.data_counter + calcsize(section_string)]))
+            self.data_counter += calcsize(section_string)
+
+    def sections_reset(self):
+        self.sections = []
+
+    def sections_show(self):
+        print('XEX_SECTIONS =', self.section_count)
+        for section in self.sections:
+            print('  ',  self.hex8(section[0]),  self.hex8(section[1]),  section[2])
 
     def base_reference_decode(self, header):
         if self.key(header) == const.XEX_HEADER_BASE_REFERENCE:
