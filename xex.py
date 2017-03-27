@@ -1,4 +1,5 @@
 import const
+from indents import Indents
 from struct import *
 from Crypto.Cipher import AES
 
@@ -43,6 +44,8 @@ class Xex:
         if not filename:
             print('invalid xex provided')
             exit(1)
+
+        self.line = Indents()
 
         self.optional_headers_reset()
         self.sections_reset()
@@ -100,13 +103,15 @@ class Xex:
             exit(1)
 
     def header_show(self):
-        print('XEX_HEADER')
-        print('  SIGNATURE =',  self.signature)
-        print('  MODULE_FLAGS =',  self.hex8(self.module_flags))
-        print('  EXE_OFFSET =',  self.hex8(self.exe_offset),  self.exe_offset)
-        print('  UNK =',  self.unk)
-        print('  CERT_OFFSET =',  self.hex8(self.cert_offset),  self.cert_offset)
-        print('  OPTIONAL_HEADER_COUNT =',  self.header_count)
+        self.line.output('XEX_HEADER')
+        self.line.indent()
+        self.line.output('SIGNATURE', self.signature)
+        self.line.output('MODULE_FLAGS', self.hex8(self.module_flags))
+        self.line.output('EXE_OFFSET', self.hex8(self.exe_offset), self.exe_offset)
+        self.line.output('UNK', self.unk)
+        self.line.output('CERT_OFFSET', self.hex8(self.cert_offset), self.cert_offset)
+        self.line.output('OPTIONAL_HEADER_COUNT', self.header_count)
+        self.line.outdent()
 
     def loader_decode(self):
         self.data_counter = self.cert_offset
@@ -119,22 +124,24 @@ class Xex:
         self.data_counter += calcsize(loader_string)
 
     def loader_show(self):
-        print('XEX_LOADER')
-        print('  HEADER_SIZE =', self.hex8(self.loader_header_size), self.loader_header_size)
-        print('  IMAGE_SIZE =', self.hex8(self.loader_image_size), self.loader_image_size)
-        print('  RSA_SIG =', self.loader_rsa_sig)
-        print('  UNK_LENGTH =', self.loader_unklength)
-        print('  IMAGE_FLAGS =', self.hex8(self.loader_image_flags))
-        print('  LOAD_ADDRESS =', self.hex8(self.loader_load_address))
-        print('  SECTION_DIGEST =', self.loader_section_digest)
-        print('  IMPORT_TABLE_COUNT =', self.loader_import_table_count)
-        print('  IMPORT_TABLE_DIGEST =',  self.loader_import_table_digest)
-        print('  MEDIA_ID =', self.loader_media_id)
-        print('  FILE_KEY =', self.loader_file_key)
-        print('  EXPORT_TABLE =', self.loader_export_table)
-        print('  HEADER_DIGEST =', self.loader_header_digest)
-        print('  GAME_REGIONS =', self.hex8(self.loader_game_regions))
-        print('  MEDIA_FLAGS =',  self.hex8(self.loader_media_flags))
+        self.line.output('XEX_LOADER')
+        self.line.indent()
+        self.line.output('HEADER_SIZE', self.hex8(self.loader_header_size), self.loader_header_size)
+        self.line.output('IMAGE_SIZE', self.hex8(self.loader_image_size), self.loader_image_size)
+        self.line.output('RSA_SIG', self.loader_rsa_sig)
+        self.line.output('UNK_LENGTH', self.loader_unklength)
+        self.line.output('IMAGE_FLAGS', self.hex8(self.loader_image_flags))
+        self.line.output('LOAD_ADDRESS', self.hex8(self.loader_load_address))
+        self.line.output('SECTION_DIGEST', self.loader_section_digest)
+        self.line.output('IMPORT_TABLE_COUNT', self.loader_import_table_count)
+        self.line.output('IMPORT_TABLE_DIGEST', self.loader_import_table_digest)
+        self.line.output('MEDIA_ID', self.loader_media_id)
+        self.line.output('FILE_KEY', self.loader_file_key)
+        self.line.output('EXPORT_TABLE', self.loader_export_table)
+        self.line.output('HEADER_DIGEST', self.loader_header_digest)
+        self.line.output('GAME_REGIONS', self.hex8(self.loader_game_regions))
+        self.line.output('MEDIA_FLAGS', self.hex8(self.loader_media_flags))
+        self.line.outdent()
 
     def optional_headers_decode(self):
         optional_header_string = '>L L'
@@ -156,9 +163,11 @@ class Xex:
         self.sections = []
 
     def sections_show(self):
-        print('XEX_SECTIONS =', self.section_count)
+        self.line.output('XEX_SECTIONS', self.section_count)
+        self.line.indent()
         for section in self.sections:
-            print('  ',  self.hex8(section[0]),  self.hex8(section[1]),  section[2])
+            self.line.output(self.hex8(section[0]), self.hex8(section[1]), section[2])
+        self.line.outdent()
 
     def base_reference_decode(self, header):
         if self.key(header) == const.XEX_HEADER_BASE_REFERENCE:
@@ -178,7 +187,7 @@ class Xex:
         self.exe_heap_size = 0
 
     def default_heap_size_show(self):
-        print('XEX_HEADER_DEFAULT_HEAP_SIZE =',  self.exe_heap_size)
+        self.line.output('XEX_HEADER_DEFAULT_HEAP_SIZE', self.exe_heap_size)
 
     def default_stack_size_decode(self,  header):
         if self.key(header) == const.XEX_HEADER_DEFAULT_STACK_SIZE:
@@ -188,7 +197,7 @@ class Xex:
         self.exe_stack_size = 0
 
     def default_stack_size_show(self):
-        print('XEX_HEADER_DEFAULT_STACK_SIZE =',  self.exe_stack_size)
+        self.line.output('XEX_HEADER_DEFAULT_STACK_SIZE', self.exe_stack_size)
 
     def delta_patch_descriptor_decode(self, header):
         if self.key(header) == const.XEX_HEADER_DELTA_PATCH_DESCRIPTOR:
@@ -208,7 +217,7 @@ class Xex:
         self.entry_point = 0
 
     def entry_point_show(self):
-        print('XEX_HEADER_ENTRY_POINT =',  self.hex8(self.entry_point))
+        self.line.output('XEX_HEADER_ENTRY_POINT', self.hex8(self.entry_point))
 
     def execution_info_decode(self, header):
         if self.key(header) == const.XEX_HEADER_EXECUTION_INFO:
@@ -229,16 +238,18 @@ class Xex:
         self.savegame_id = 0
 
     def execution_info_show(self):
-        print('XEX_HEADER_EXECUTION_INFO')
-        print('  MEDIA_ID =',  self.media_id)
-        print('  VERSION =',  str(self.version))
-        print('  BASE_VERSION =',  str(self.base_version))
-        print('  TITLE_ID =',  str(self.title_id))
-        print('  PLATFORM =',  self.platform)
-        print('  EXECUTION_TABLE =',  self.execution_table)
-        print('  DISK_NUMBER =',  self.disk_number)
-        print('  DISK_COUNT =',  self.disk_count)
-        print('  SAVE_GAME_ID =',  self.savegame_id)
+        self.line.output('XEX_HEADER_EXECUTION_INFO')
+        self.line.indent()
+        self.line.output('MEDIA_ID', self.media_id)
+        self.line.output('VERSION', str(self.version))
+        self.line.output('BASE_VERSION', str(self.base_version))
+        self.line.output('TITLE_ID', str(self.title_id))
+        self.line.output('PLATFORM', self.platform)
+        self.line.output('EXECUTION_TABLE', self.execution_table)
+        self.line.output('DISK_NUMBER', self.disk_number)
+        self.line.output('DISK_COUNT', self.disk_count)
+        self.line.output('SAVE_GAME_ID', self.savegame_id)
+        self.line.outdent()
 
     def file_format_info_decode(self, header):
         if self.key(header) == const.XEX_HEADER_FILE_FORMAT_INFO:
@@ -257,10 +268,12 @@ class Xex:
         self.compression_type = 0
 
     def file_format_info_show(self):
-        print('XEX_HEADER_FILE_FORMAT_INFO')
-        print('  SIZE =', self.info_size)
-        print('  ENCRYPTION_TYPE =', self.encryption_type,  const.XEX_ENCRYPTION[self.encryption_type])
-        print('  COMPRESSION_TYPE =', self.compression_type, const.XEX_COMPRESSION[self.compression_type])
+        self.line.output('XEX_HEADER_FILE_FORMAT_INFO')
+        self.line.indent()
+        self.line.output('SIZE', self.info_size)
+        self.line.output('ENCRYPTION_TYPE', self.encryption_type,  const.XEX_ENCRYPTION[self.encryption_type])
+        self.line.output('COMPRESSION_TYPE', self.compression_type, const.XEX_COMPRESSION[self.compression_type])
+        self.line.outdent()
 
     def game_ratings_decode(self, header):
         if self.key(header) == const.XEX_HEADER_GAME_RATINGS:
@@ -284,19 +297,21 @@ class Xex:
         self.fpb = 0
 
     def game_ratings_show(self):
-        print('XEX_HEADER_GAME_RATINGS')
-        print('  ESRB =',  self.esrb)
-        print('  PEGI =',  self.pegi)
-        print('  PEGIFI =',  self.pegifi)
-        print('  PEGIPT =',  self.pegipt)
-        print('  BBFC =',  self.bbfc)
-        print('  CERO =',  self.cero)
-        print('  USK =',  self.usk)
-        print('  OFLCAU =',  self.oflcau)
-        print('  OFLCNZ =',  self.oflcnz)
-        print('  MRB =',  self.mrb)
-        print('  BRAZIL =',  self.brazil)
-        print('  FPB =',  self.fpb)
+        self.line.output('XEX_HEADER_GAME_RATINGS')
+        self.line.indent()
+        self.line.output('ESRB', self.esrb)
+        self.line.output('PEGI', self.pegi)
+        self.line.output('PEGIFI', self.pegifi)
+        self.line.output('PEGIPT', self.pegipt)
+        self.line.output('BBFC', self.bbfc)
+        self.line.output('CERO', self.cero)
+        self.line.output('USK', self.usk)
+        self.line.output('OFLCAU', self.oflcau)
+        self.line.output('OFLCNZ', self.oflcnz)
+        self.line.output('MRB', self.mrb)
+        self.line.output('BRAZIL', self.brazil)
+        self.line.output('FPB', self.fpb)
+        self.line.outdent()
 
     def image_base_address_decode(self, header):
         if self.key(header) == const.XEX_HEADER_IMAGE_BASE_ADDRESS:
@@ -306,7 +321,7 @@ class Xex:
         self.base_image_address = 0
 
     def image_base_address_show(self):
-        print('XEX_HEADER_IMAGE_BASE_ADDRESS =',  self.hex8(self.base_image_address))
+        self.line.output('XEX_HEADER_IMAGE_BASE_ADDRESS', self.hex8(self.base_image_address))
 
     def original_pe_name_decode(self, header):
         if self.key(header) == const.XEX_HEADER_ORIGINAL_PE_NAME:
@@ -317,7 +332,7 @@ class Xex:
         self.original_pe_name = ''
 
     def original_pe_name_show(self):
-        print('XEX_HEADER_ORIGINAL_PE_NAME =',  self.original_pe_name)
+        self.line.output('XEX_HEADER_ORIGINAL_PE_NAME', self.original_pe_name)
 
     def resource_info_decode(self, header):
         if self.key(header) == const.XEX_HEADER_RESOURCE_INFO:
@@ -330,7 +345,7 @@ class Xex:
         self.resource_info_count = 0
 
     def resource_info_show(self):
-        print('XEX_HEADER_RESOURCE_INFO =',  self.resource_info_count)
+        self.line.output('XEX_HEADER_RESOURCE_INFO', self.resource_info_count)
 
     def system_flags_decode(self, header):
         if self.key(header) == const.XEX_HEADER_SYSTEM_FLAGS:
@@ -340,7 +355,7 @@ class Xex:
          self.system_flags = 0
 
     def system_flags_show(self):
-         print('XEX_HEADER_SYSTEM_FLAGS',  self.hex8(self.system_flags))
+         self.line.output('XEX_HEADER_SYSTEM_FLAGS', self.hex8(self.system_flags))
 
     def tls_info_decode(self, header):
         if self.key(header) == const.XEX_HEADER_TLS_INFO:
@@ -355,11 +370,13 @@ class Xex:
         self.tls_raw_data_size = 0
 
     def tls_info_show(self):
-        print('XEX_HEADER_TLS_INFO')
-        print('  TLS_SLOT_COUNT =',  self.tls_slot_count)
-        print('  TLS_RAW_DATA_ADDRESS =',  self.hex8(self.tls_raw_data_address))
-        print('  TLS_RAW_DATA_SIZE =',  self.tls_raw_data_size)
-        print('  TLS_DATA_SIZE =',  self.tls_data_size)
+        self.line.output('XEX_HEADER_TLS_INFO')
+        self.line.indent()
+        self.line.output('TLS_SLOT_COUNT', self.tls_slot_count)
+        self.line.output('TLS_RAW_DATA_ADDRESS', self.hex8(self.tls_raw_data_address))
+        self.line.output('TLS_RAW_DATA_SIZE', self.tls_raw_data_size)
+        self.line.output('TLS_DATA_SIZE', self.tls_data_size)
+        self.line.outdent()
 
     def decrypt_header_key(self):
         cipher = AES.new(self.RETAIL_KEY)
