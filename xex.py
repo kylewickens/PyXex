@@ -37,7 +37,8 @@ const.XEX_HEADER_TLS_INFO = 0x00020104
 
 class Xex:
 
-    RETAIL_KEY = b'\x20\xB1\x85\xA5\x9D\x28\xFD\xC3\40\x58\x3F\xBB\x08\x96\xBF\x91'
+    RETAIL_KEY = b'\x20\xB1\x85\xA5\x9D\x28\xFD\xC3\x40\x58\x3F\xBB\x08\x96\xBF\x91'
+    DEVKIT_KEY = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 
     def __init__(self, filename):
         self.data_counter = 0
@@ -211,13 +212,13 @@ class Xex:
 
     def entry_point_decode(self,  header):
         if self.key(header) == const.XEX_HEADER_ENTRY_POINT:
-            self.entry_point = header[1]
+            self.exe_entry_point = header[1]
 
     def entry_point_reset(self):
-        self.entry_point = 0
+        self.exe_entry_point = 0
 
     def entry_point_show(self):
-        self.line.output('XEX_HEADER_ENTRY_POINT', self.hex8(self.entry_point))
+        self.line.output('XEX_HEADER_ENTRY_POINT', self.hex8(self.exe_entry_point))
 
     def execution_info_decode(self, header):
         if self.key(header) == const.XEX_HEADER_EXECUTION_INFO:
@@ -315,13 +316,13 @@ class Xex:
 
     def image_base_address_decode(self, header):
         if self.key(header) == const.XEX_HEADER_IMAGE_BASE_ADDRESS:
-            self.base_image_address = header[1]
+            self.exe_address = header[1]
 
     def image_base_address_reset(self):
-        self.base_image_address = 0
+        self.exe_address = 0
 
     def image_base_address_show(self):
-        self.line.output('XEX_HEADER_IMAGE_BASE_ADDRESS', self.hex8(self.base_image_address))
+        self.line.output('XEX_HEADER_IMAGE_BASE_ADDRESS', self.hex8(self.exe_address))
 
     def original_pe_name_decode(self, header):
         if self.key(header) == const.XEX_HEADER_ORIGINAL_PE_NAME:
@@ -384,4 +385,4 @@ class Xex:
         return cipher.decrypt(self.loader_file_key)
 
     def convert_virtual_address(self, address):
-        return address - self.base_image_address
+        return address - self.exe_address
