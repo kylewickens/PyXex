@@ -18,6 +18,7 @@ if __name__ == '__main__':
     x.delta_patch_descriptor_show()
     x.device_id_show()
     x.enabled_for_callcap_show()
+    x.enabled_for_fastcap_show()
     x.entry_point_show()
     x.execution_info_show()
     x.file_format_info_show()
