@@ -23,6 +23,7 @@ const.XEX_ENCRYPTION_NORMAL = 1
 
 const.XEX_HEADER_BASE_REFERENCE = 0x00000405
 const.XEX_HEADER_BOUNDING_PATH = 0x000080FF
+const.XEX_HEADER_CHECKSUM_TIMESTAMP = 0x00018002
 const.XEX_HEADER_DEFAULT_STACK_SIZE = 0x00020200
 const.XEX_HEADER_DEFAULT_HEAP_SIZE = 0x00020401
 const.XEX_HEADER_DELTA_PATCH_DESCRIPTOR = 0x000005FF
@@ -39,7 +40,6 @@ const.XEX_HEADER_RESOURCE_INFO = 0x000002FF
 const.XEX_HEADER_SYSTEM_FLAGS = 0x00030000
 const.XEX_HEADER_TLS_INFO = 0x00020104
 
-const.XEX_HEADER_CHECKSUM_TIMESTAMP = 0x00018002
 const.XEX_HEADER_ENABLED_FOR_CALLCAP = 0x00018102
 const.XEX_HEADER_ENABLED_FOR_FASTCAP = 0x00018200
 const.XEX_HEADER_STATIC_LIBRARIES = 0x000200FF
@@ -71,6 +71,7 @@ class Xex:
 
         self.base_reference_reset()
         self.bounding_path_reset()
+        self.checksum_timestamp_reset()
         self.default_heap_size_reset()
         self.default_stack_size_reset()
         self.delta_patch_descriptor_reset()
@@ -95,6 +96,7 @@ class Xex:
         for optional_header in self.optional_headers:
             self.base_reference_decode(optional_header)
             self.bounding_path_decode(optional_header)
+            self.checksum_timestamp_decode(optional_header)
             self.default_stack_size_decode(optional_header)
             self.default_heap_size_decode(optional_header)
             self.delta_patch_descriptor_decode(optional_header)
@@ -214,6 +216,16 @@ class Xex:
         pass
 
     def bounding_path_show(self):
+        pass
+
+    def checksum_timestamp_decode(self, header):
+        if self.key(header) == const.XEX_HEADER_CHECKSUM_TIMESTAMP:
+            pass
+
+    def checksum_timestamp_reset(self):
+        pass
+
+    def checksum_timestamp_show(self):
         pass
 
     def default_heap_size_decode(self, header):
