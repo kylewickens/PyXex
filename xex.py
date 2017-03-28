@@ -39,10 +39,10 @@ const.XEX_HEADER_IMPORT_LIBRARIES = 0x000103FF
 const.XEX_HEADER_ORIGINAL_BASE_ADDRESS = 0x00010001
 const.XEX_HEADER_ORIGINAL_PE_NAME = 0x000183FF
 const.XEX_HEADER_RESOURCE_INFO = 0x000002FF
+const.XEX_HEADER_STATIC_LIBRARIES = 0x000200FF
 const.XEX_HEADER_SYSTEM_FLAGS = 0x00030000
 const.XEX_HEADER_TLS_INFO = 0x00020104
 
-const.XEX_HEADER_STATIC_LIBRARIES = 0x000200FF
 const.XEX_HEADER_DEFAULT_FILESYSTEM_CACHE_SIZE = 0x00020301
 const.XEX_HEADER_PAGE_HEAP_SIZE_AND_FLAGS = 0x00028002
 const.XEX_HEADER_TITLE_WORKSPACE_SIZE = 0x00040201
@@ -87,6 +87,7 @@ class Xex:
         self.original_base_address_reset()
         self.original_pe_name_reset()
         self.resource_info_reset()
+        self.static_libraries_reset()
         self.system_flags_reset()
         self.tls_info_reset()
 
@@ -114,6 +115,7 @@ class Xex:
             self.original_base_address_decode(optional_header)
             self.original_pe_name_decode(optional_header)
             self.resource_info_decode(optional_header)
+            self.static_libraries_decode(optional_header)
             self.system_flags_decode(optional_header)
             self.tls_info_decode(optional_header)
 
@@ -449,6 +451,16 @@ class Xex:
 
     def resource_info_show(self):
         self.line.output('XEX_HEADER_RESOURCE_INFO', self.resource_info_count)
+
+    def static_libraries_decode(self, header):
+        if self.key(header) == const.XEX_HEADER_STATIC_LIBRARIES:
+            pass
+
+    def static_libraries_reset(self):
+        pass
+
+    def static_libraries_show(self):
+        pass
 
     def system_flags_decode(self, header):
         if self.key(header) == const.XEX_HEADER_SYSTEM_FLAGS:
