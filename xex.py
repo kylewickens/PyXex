@@ -22,6 +22,7 @@ const.XEX_ENCRYPTION_NONE = 0
 const.XEX_ENCRYPTION_NORMAL = 1
 
 const.XEX_HEADER_ADDITIONAL_TITLE_MEMORY = 0x00040801
+const.XEX_HEADER_ALTERNATE_TITLE_IDS = 0x000407FF
 const.XEX_HEADER_BASE_REFERENCE = 0x00000405
 const.XEX_HEADER_BOUNDING_PATH = 0x000080FF
 const.XEX_HEADER_CHECKSUM_TIMESTAMP = 0x00018002
@@ -50,7 +51,6 @@ const.XEX_HEADER_PAGE_HEAP_SIZE_AND_FLAGS = 0x00028002
 const.XEX_HEADER_LAN_KEY = 0x00040404
 const.XEX_HEADER_XBOX360_LOGO = 0x000405FF
 const.XEX_HEADER_MULTIDISC_MEDIA_IDS = 0x000406FF
-const.XEX_HEADER_ALTERNATE_TITLE_IDS = 0x000407FF
 const.XEX_HEADER_EXPORTS_BY_NAME = 0x00E10402
 
 class Xex:
@@ -70,6 +70,7 @@ class Xex:
         self.sections_reset()
 
         self.additional_title_memory_reset()
+        self.alternate_title_ids_reset()
         self.base_reference_reset()
         self.bounding_path_reset()
         self.checksum_timestamp_reset()
@@ -101,6 +102,7 @@ class Xex:
 
         for optional_header in self.optional_headers:
             self.additional_title_memory_decode(optional_header)
+            self.alternate_title_ids_decode(optional_header)
             self.base_reference_decode(optional_header)
             self.bounding_path_decode(optional_header)
             self.checksum_timestamp_decode(optional_header)
@@ -218,6 +220,16 @@ class Xex:
         pass
 
     def additional_title_memory_show(self):
+        pass
+
+    def alternate_title_ids_decode(self, header):
+        if self.key(header) == const.XEX_HEADER_ALTERNATE_TITLE_IDS:
+            pass
+
+    def alternate_title_ids_reset(self):
+        pass
+
+    def alternate_title_ids_show(self):
         pass
 
     def base_reference_decode(self, header):
