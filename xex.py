@@ -35,6 +35,7 @@ const.XEX_HEADER_ENABLED_FOR_CALLCAP = 0x00018102
 const.XEX_HEADER_ENABLED_FOR_FASTCAP = 0x00018200
 const.XEX_HEADER_ENTRY_POINT = 0x00010100
 const.XEX_HEADER_EXECUTION_INFO = 0x00040006
+const.XEX_HEADER_EXPORTS_BY_NAME = 0x00E10402
 const.XEX_HEADER_FILE_FORMAT_INFO = 0x000003FF
 const.XEX_HEADER_GAME_RATINGS = 0x00040310
 const.XEX_HEADER_IMAGE_BASE_ADDRESS = 0x00010201
@@ -51,7 +52,6 @@ const.XEX_HEADER_PAGE_HEAP_SIZE_AND_FLAGS = 0x00028002
 const.XEX_HEADER_LAN_KEY = 0x00040404
 const.XEX_HEADER_XBOX360_LOGO = 0x000405FF
 const.XEX_HEADER_MULTIDISC_MEDIA_IDS = 0x000406FF
-const.XEX_HEADER_EXPORTS_BY_NAME = 0x00E10402
 
 class Xex:
 
@@ -83,6 +83,7 @@ class Xex:
         self.enabled_for_fastcap_reset()
         self.entry_point_reset()
         self.execution_info_reset()
+        self.exports_by_name_reset()
         self.file_format_info_reset()
         self.game_ratings_reset()
         self.image_base_address_reset()
@@ -115,6 +116,7 @@ class Xex:
             self.enabled_for_fastcap_decode(optional_header)
             self.entry_point_decode(optional_header)
             self.execution_info_decode(optional_header)
+            self.exports_by_name_decode(optional_header)
             self.file_format_info_decode(optional_header)
             self.game_ratings_decode(optional_header)
             self.image_base_address_decode(optional_header)
@@ -373,6 +375,16 @@ class Xex:
         self.line.output('DISK_COUNT', self.disk_count)
         self.line.output('SAVE_GAME_ID', self.savegame_id)
         self.line.outdent()
+
+    def exports_by_name_decode(self, header):
+        if self.key(header) == const.XEX_HEADER_EXPORTS_BY_NAME:
+            pass
+
+    def exports_by_name_reset(self):
+        pass
+
+    def exports_by_name_show(self):
+        pass
 
     def file_format_info_decode(self, header):
         if self.key(header) == const.XEX_HEADER_FILE_FORMAT_INFO:

@@ -24,6 +24,7 @@ if __name__ == '__main__':
     x.enabled_for_fastcap_show()
     x.entry_point_show()
     x.execution_info_show()
+    x.exports_by_name_show()
     x.file_format_info_show()
     x.game_ratings_show()
     x.image_base_address_show()
