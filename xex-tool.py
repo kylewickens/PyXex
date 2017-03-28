@@ -13,6 +13,7 @@ if __name__ == '__main__':
     x.base_reference_show()
     x.bounding_path_show()
     x.checksum_timestamp_show()
+    x.default_filesystem_cache_size_show()
     x.default_heap_size_show()
     x.default_stack_size_show()
     x.delta_patch_descriptor_show()
