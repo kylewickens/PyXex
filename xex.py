@@ -42,10 +42,10 @@ const.XEX_HEADER_ORIGINAL_PE_NAME = 0x000183FF
 const.XEX_HEADER_RESOURCE_INFO = 0x000002FF
 const.XEX_HEADER_STATIC_LIBRARIES = 0x000200FF
 const.XEX_HEADER_SYSTEM_FLAGS = 0x00030000
+const.XEX_HEADER_TITLE_WORKSPACE_SIZE = 0x00040201
 const.XEX_HEADER_TLS_INFO = 0x00020104
 
 const.XEX_HEADER_PAGE_HEAP_SIZE_AND_FLAGS = 0x00028002
-const.XEX_HEADER_TITLE_WORKSPACE_SIZE = 0x00040201
 const.XEX_HEADER_LAN_KEY = 0x00040404
 const.XEX_HEADER_XBOX360_LOGO = 0x000405FF
 const.XEX_HEADER_MULTIDISC_MEDIA_IDS = 0x000406FF
@@ -90,6 +90,7 @@ class Xex:
         self.resource_info_reset()
         self.static_libraries_reset()
         self.system_flags_reset()
+        self.title_workspace_size_reset()
         self.tls_info_reset()
 
         self.data = open(filename, 'rb').read()
@@ -119,6 +120,7 @@ class Xex:
             self.resource_info_decode(optional_header)
             self.static_libraries_decode(optional_header)
             self.system_flags_decode(optional_header)
+            self.title_workspace_size_decode(optional_header)
             self.tls_info_decode(optional_header)
 
         self.loader_decode()
@@ -483,6 +485,16 @@ class Xex:
 
     def system_flags_show(self):
          self.line.output('XEX_HEADER_SYSTEM_FLAGS', self.hex8(self.system_flags))
+
+    def title_workspace_size_decode(self, header):
+        if self.key(header) == const.XEX_HEADER_TITLE_WORKSPACE_SIZE:
+            pass
+
+    def title_workspace_size_reset(self):
+        pass
+
+    def title_workspace_size_show(self):
+        pass
 
     def tls_info_decode(self, header):
         if self.key(header) == const.XEX_HEADER_TLS_INFO:

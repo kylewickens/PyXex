@@ -31,4 +31,5 @@ if __name__ == '__main__':
     x.resource_info_show()
     x.static_libraries_show()
     x.system_flags_show()
+    x.title_workspace_size_show()
     x.tls_info_show()
