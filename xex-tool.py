@@ -22,6 +22,7 @@ if __name__ == '__main__':
     x.game_ratings_show()
     x.image_base_address_show()
     x.import_libraries_show()
+    x.original_base_address_show()
     x.original_pe_name_show()
     x.resource_info_show()
     x.system_flags_show()

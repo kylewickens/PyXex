@@ -33,12 +33,12 @@ const.XEX_HEADER_FILE_FORMAT_INFO = 0x000003FF
 const.XEX_HEADER_GAME_RATINGS = 0x00040310
 const.XEX_HEADER_IMAGE_BASE_ADDRESS = 0x00010201
 const.XEX_HEADER_IMPORT_LIBRARIES = 0x000103FF
+const.XEX_HEADER_ORIGINAL_BASE_ADDRESS = 0x00010001
 const.XEX_HEADER_ORIGINAL_PE_NAME = 0x000183FF
 const.XEX_HEADER_RESOURCE_INFO = 0x000002FF
 const.XEX_HEADER_SYSTEM_FLAGS = 0x00030000
 const.XEX_HEADER_TLS_INFO = 0x00020104
 
-const.XEX_HEADER_ORIGINAL_BASE_ADDRESS = 0x00010001
 const.XEX_HEADER_CHECKSUM_TIMESTAMP = 0x00018002
 const.XEX_HEADER_ENABLED_FOR_CALLCAP = 0x00018102
 const.XEX_HEADER_ENABLED_FOR_FASTCAP = 0x00018200
@@ -81,6 +81,7 @@ class Xex:
         self.game_ratings_reset()
         self.image_base_address_reset()
         self.import_libraries_reset()
+        self.original_base_address_reset()
         self.original_pe_name_reset()
         self.resource_info_reset()
         self.system_flags_reset()
@@ -104,6 +105,7 @@ class Xex:
             self.game_ratings_decode(optional_header)
             self.image_base_address_decode(optional_header)
             self.import_libraries_decode(optional_header)
+            self.original_base_address_decode(optional_header)
             self.original_pe_name_decode(optional_header)
             self.resource_info_decode(optional_header)
             self.system_flags_decode(optional_header)
@@ -376,6 +378,16 @@ class Xex:
         pass
 
     def import_libraries_show(self):
+        pass
+
+    def original_base_address_decode(self, header):
+        if self.key(header) == const.XEX_HEADER_ORIGINAL_BASE_ADDRESS:
+            pass
+
+    def original_base_address_reset(self):
+        pass
+
+    def original_base_address_show(self):
         pass
 
     def original_pe_name_decode(self, header):
