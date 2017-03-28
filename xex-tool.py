@@ -38,3 +38,4 @@ if __name__ == '__main__':
     x.system_flags_show()
     x.title_workspace_size_show()
     x.tls_info_show()
+    x.xbox360_logo_show()

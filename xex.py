@@ -49,8 +49,8 @@ const.XEX_HEADER_STATIC_LIBRARIES = 0x000200FF
 const.XEX_HEADER_SYSTEM_FLAGS = 0x00030000
 const.XEX_HEADER_TITLE_WORKSPACE_SIZE = 0x00040201
 const.XEX_HEADER_TLS_INFO = 0x00020104
-
 const.XEX_HEADER_XBOX360_LOGO = 0x000405FF
+
 const.XEX_HEADER_MULTIDISC_MEDIA_IDS = 0x000406FF
 
 class Xex:
@@ -97,6 +97,7 @@ class Xex:
         self.system_flags_reset()
         self.title_workspace_size_reset()
         self.tls_info_reset()
+        self.xbox360_logo_reset()
 
         self.data = open(filename, 'rb').read()
 
@@ -132,6 +133,7 @@ class Xex:
             self.system_flags_decode(optional_header)
             self.title_workspace_size_decode(optional_header)
             self.tls_info_decode(optional_header)
+            self.xbox360_logo_decode(optional_header)
 
         self.loader_decode()
         self.sections_decode()
@@ -576,6 +578,16 @@ class Xex:
         self.line.output('TLS_RAW_DATA_SIZE', self.tls_raw_data_size)
         self.line.output('TLS_DATA_SIZE', self.tls_data_size)
         self.line.outdent()
+
+    def xbox360_logo_decode(self, header):
+        if self.key(header) == const.XEX_HEADER_XBOX360_LOGO:
+            pass
+
+    def xbox360_logo_reset(self):
+        pass
+
+    def xbox360_logo_show(self):
+        pass
 
     def decrypt_header_key(self):
         cipher = AES.new(self.RETAIL_KEY)
