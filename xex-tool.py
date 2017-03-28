@@ -10,6 +10,7 @@ if __name__ == '__main__':
     x.sections_show()
     x.loader_show()
 
+    x.additional_title_memory_show()
     x.base_reference_show()
     x.bounding_path_show()
     x.checksum_timestamp_show()
