@@ -28,6 +28,7 @@ const.XEX_HEADER_DEFAULT_STACK_SIZE = 0x00020200
 const.XEX_HEADER_DEFAULT_HEAP_SIZE = 0x00020401
 const.XEX_HEADER_DELTA_PATCH_DESCRIPTOR = 0x000005FF
 const.XEX_HEADER_DEVICE_ID = 0x00008105
+const.XEX_HEADER_ENABLED_FOR_CALLCAP = 0x00018102
 const.XEX_HEADER_ENTRY_POINT = 0x00010100
 const.XEX_HEADER_EXECUTION_INFO = 0x00040006
 const.XEX_HEADER_FILE_FORMAT_INFO = 0x000003FF
@@ -40,7 +41,6 @@ const.XEX_HEADER_RESOURCE_INFO = 0x000002FF
 const.XEX_HEADER_SYSTEM_FLAGS = 0x00030000
 const.XEX_HEADER_TLS_INFO = 0x00020104
 
-const.XEX_HEADER_ENABLED_FOR_CALLCAP = 0x00018102
 const.XEX_HEADER_ENABLED_FOR_FASTCAP = 0x00018200
 const.XEX_HEADER_STATIC_LIBRARIES = 0x000200FF
 const.XEX_HEADER_DEFAULT_FILESYSTEM_CACHE_SIZE = 0x00020301
@@ -76,6 +76,7 @@ class Xex:
         self.default_stack_size_reset()
         self.delta_patch_descriptor_reset()
         self.device_id_reset()
+        self.enabled_for_callcap_reset()
         self.entry_point_reset()
         self.execution_info_reset()
         self.file_format_info_reset()
@@ -101,6 +102,7 @@ class Xex:
             self.default_heap_size_decode(optional_header)
             self.delta_patch_descriptor_decode(optional_header)
             self.device_id_decode(optional_header)
+            self.enabled_for_callcap_decode(optional_header)
             self.entry_point_decode(optional_header)
             self.execution_info_decode(optional_header)
             self.file_format_info_decode(optional_header)
@@ -266,6 +268,16 @@ class Xex:
         pass
 
     def device_id_show(self):
+        pass
+
+    def enabled_for_callcap_decode(self, header):
+        if self.key(header) == const.XEX_HEADER_ENABLED_FOR_CALLCAP:
+            pass
+
+    def enabled_for_callcap_reset(self):
+        pass
+
+    def enabled_for_callcap_show(self):
         pass
 
     def entry_point_decode(self,  header):
