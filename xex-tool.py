@@ -30,6 +30,7 @@ if __name__ == '__main__':
     x.image_base_address_show()
     x.import_libraries_show()
     x.lan_key_show()
+    x.multidisc_media_ids_show()
     x.original_base_address_show()
     x.original_pe_name_show()
     x.page_heap_size_and_flags_show()

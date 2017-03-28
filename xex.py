@@ -41,6 +41,7 @@ const.XEX_HEADER_GAME_RATINGS = 0x00040310
 const.XEX_HEADER_IMAGE_BASE_ADDRESS = 0x00010201
 const.XEX_HEADER_IMPORT_LIBRARIES = 0x000103FF
 const.XEX_HEADER_LAN_KEY = 0x00040404
+const.XEX_HEADER_MULTIDISC_MEDIA_IDS = 0x000406FF
 const.XEX_HEADER_ORIGINAL_BASE_ADDRESS = 0x00010001
 const.XEX_HEADER_ORIGINAL_PE_NAME = 0x000183FF
 const.XEX_HEADER_PAGE_HEAP_SIZE_AND_FLAGS = 0x00028002
@@ -50,8 +51,6 @@ const.XEX_HEADER_SYSTEM_FLAGS = 0x00030000
 const.XEX_HEADER_TITLE_WORKSPACE_SIZE = 0x00040201
 const.XEX_HEADER_TLS_INFO = 0x00020104
 const.XEX_HEADER_XBOX360_LOGO = 0x000405FF
-
-const.XEX_HEADER_MULTIDISC_MEDIA_IDS = 0x000406FF
 
 class Xex:
 
@@ -89,6 +88,7 @@ class Xex:
         self.image_base_address_reset()
         self.import_libraries_reset()
         self.lan_key_reset()
+        self.multidisc_media_ids_reset()
         self.original_base_address_reset()
         self.original_pe_name_reset()
         self.page_heap_size_and_flags_reset()
@@ -125,6 +125,7 @@ class Xex:
             self.image_base_address_decode(optional_header)
             self.import_libraries_decode(optional_header)
             self.lan_key_decode(optional_header)
+            self.multidisc_media_ids_decode(optional_header)
             self.original_base_address_decode(optional_header)
             self.original_pe_name_decode(optional_header)
             self.page_heap_size_and_flags_decode(optional_header)
@@ -482,6 +483,16 @@ class Xex:
         pass
 
     def lan_key_show(self):
+        pass
+
+    def multidisc_media_ids_decode(self, header):
+        if self.key(header) == const.XEX_HEADER_MULTIDISC_MEDIA_IDS:
+            pass
+
+    def multidisc_media_ids_reset(self):
+        pass
+
+    def multidisc_media_ids_show(self):
         pass
 
     def original_base_address_decode(self, header):
