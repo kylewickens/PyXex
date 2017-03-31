@@ -1,5 +1,5 @@
 # PyXex
-A module that allows interatction with the xbox 360 executable format (xex)
+A module that allows interatction with the xbox 360 executable format (xex2).
 
 **Sample Uses**
 
