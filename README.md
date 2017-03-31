@@ -1,20 +1,20 @@
 # PyXex
 A module that allows interatction with the xbox 360 executable format (xex)
 
-Sample Uses
+**Sample Uses**
 
 x = Xex('path\to\file\file.xex')
 print(hex(x.entry_point))
 
-Usage
+**Usage**
 
 python3 xex-tool.py thisfile.xex
 
-Prerequisites
+**Prerequisites**
 
 pip3 install pycrypto
 
-Acknowledgements
+**Acknowledgements**
 
 Forked from: https://github.com/crobject/PyXex
 
