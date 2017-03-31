@@ -7,7 +7,7 @@ const.XEX_COMPRESSION = [
     'XEX_COMPRESSION_NONE',
     'XEX_COMPRESSION_BASIC',
     'XEX_COMPRESSION_NORMAL',
-    'XEX_COMPRESSION_DELTA' ]
+    'XEX_COMPRESSION_DELTA']
 
 const.XEX_COMPRESSION_NONE = 0
 const.XEX_COMPRESSION_BASIC = 1
@@ -16,7 +16,7 @@ const.XEX_COMPRESSION_DELTA = 3
 
 const.XEX_ENCRYPTION = [
     'XEX_ENCRYPTION_NONE',
-    'XEX_ENCRYPTION_NORMAL' ]
+    'XEX_ENCRYPTION_NORMAL']
 
 const.XEX_ENCRYPTION_NONE = 0
 const.XEX_ENCRYPTION_NORMAL = 1
@@ -52,12 +52,99 @@ const.XEX_HEADER_TITLE_WORKSPACE_SIZE = 0x00040201
 const.XEX_HEADER_TLS_INFO = 0x00020104
 const.XEX_HEADER_XBOX360_LOGO = 0x000405FF
 
+const.XEX_RATING_ESRB_eC = 0x00
+const.XEX_RATING_ESRB_E = 0x02
+const.XEX_RATING_ESRB_E10 = 0x04
+const.XEX_RATING_ESRB_T = 0x06
+const.XEX_RATING_ESRB_M = 0x08
+const.XEX_RATING_ESRB_AO = 0x0E
+const.XEX_RATING_ESRB_UNRATED = 0xFF
+
+const.XEX_RATING_PEGI_3_PLUS = 0
+const.XEX_RATING_PEGI_7_PLUS = 4
+const.XEX_RATING_PEGI_12_PLUS = 9
+const.XEX_RATING_PEGI_16_PLUS = 13
+const.XEX_RATING_PEGI_18_PLUS = 14
+const.XEX_RATING_PEGI_UNRATED = 0xFF
+
+const.XEX_RATING_PEGI_FI_3_PLUS = 0
+const.XEX_RATING_PEGI_FI_7_PLUS = 4
+const.XEX_RATING_PEGI_FI_11_PLUS = 8
+const.XEX_RATING_PEGI_FI_15_PLUS = 12
+const.XEX_RATING_PEGI_FI_18_PLUS = 14
+const.XEX_RATING_PEGI_FI_UNRATED = 0xFF
+
+const.XEX_RATING_PEGI_PT_4_PLUS = 1
+const.XEX_RATING_PEGI_PT_6_PLUS = 3
+const.XEX_RATING_PEGI_PT_12_PLUS = 9
+const.XEX_RATING_PEGI_PT_16_PLUS = 13
+const.XEX_RATING_PEGI_PT_18_PLUS = 14
+const.XEX_RATING_PEGI_PT_UNRATED = 0xFF
+
+const.XEX_RATING_BBFC_UNIVERSAL = 1
+const.XEX_RATING_BBFC_PG = 5
+const.XEX_RATING_BBFC_3_PLUS = 0
+const.XEX_RATING_BBFC_7_PLUS = 4
+const.XEX_RATING_BBFC_12_PLUS = 9
+const.XEX_RATING_BBFC_15_PLUS = 12
+const.XEX_RATING_BBFC_16_PLUS = 13
+const.XEX_RATING_BBFC_18_PLUS = 14
+const.XEX_RATING_BBFC_UNRATED = 0xFF
+const.XEX_RATING_CERO_A = 0
+const.XEX_RATING_CERO_B = 2
+const.XEX_RATING_CERO_C = 4
+const.XEX_RATING_CERO_D = 6
+const.XEX_RATING_CERO_Z = 8
+const.XEX_RATING_CERO_UNRATED = 0xFF
+
+const.XEX_RATING_USK_ALL = 0
+const.XEX_RATING_USK_6_PLUS = 2
+const.XEX_RATING_USK_12_PLUS = 4
+const.XEX_RATING_USK_16_PLUS = 6
+const.XEX_RATING_USK_18_PLUS = 8
+const.XEX_RATING_USK_UNRATED = 0xFF
+
+const.XEX_RATING_OFLC_AU_G = 0
+const.XEX_RATING_OFLC_AU_PG = 2
+const.XEX_RATING_OFLC_AU_M = 4
+const.XEX_RATING_OFLC_AU_MA15_PLUS = 6
+const.XEX_RATING_OFLC_AU_UNRATED = 0xFF
+
+const.XEX_RATING_OFLC_NZ_G = 0
+const.XEX_RATING_OFLC_NZ_PG = 2
+const.XEX_RATING_OFLC_NZ_M = 4
+const.XEX_RATING_OFLC_NZ_MA15_PLUS = 6
+const.XEX_RATING_OFLC_NZ_UNRATED = 0xFF
+
+const.XEX_RATING_KMRB_ALL = 0
+const.XEX_RATING_KMRB_12_PLUS = 2
+const.XEX_RATING_KMRB_15_PLUS = 4
+const.XEX_RATING_KMRB_18_PLUS = 6
+const.XEX_RATING_KMRB_UNRATED = 0xFF
+
+const.XEX_RATING_BRAZIL_ALL = 0
+const.XEX_RATING_BRAZIL_12_PLUS = 2
+const.XEX_RATING_BRAZIL_14_PLUS = 4
+const.XEX_RATING_BRAZIL_16_PLUS = 5
+const.XEX_RATING_BRAZIL_18_PLUS = 8
+const.XEX_RATING_BRAZIL_UNRATED = 0xFF
+
+const.XEX_RATING_FPB_ALL = 0
+const.XEX_RATING_FPB_PG = 6
+const.XEX_RATING_FPB_10_PLUS = 7
+const.XEX_RATING_FPB_13_PLUS = 10
+const.XEX_RATING_FPB_16_PLUS = 13
+const.XEX_RATING_FPB_18_PLUS = 14
+const.XEX_RATING_FPB_UNRATED = 0xFF
+
+
 class Xex:
 
     RETAIL_KEY = b'\x20\xB1\x85\xA5\x9D\x28\xFD\xC3\x40\x58\x3F\xBB\x08\x96\xBF\x91'
     DEVKIT_KEY = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 
     def __init__(self, filename):
+        """The constructor."""
         self.data_counter = 0
         if not filename:
             print('invalid xex provided')
@@ -146,9 +233,19 @@ class Xex:
         return '0x' + format(value,  '08x')
 
     def header_decode(self):
+        """To decode the XEX header.
+
+        Offset | Length	| Type Information
+        ---------|-----------|------------------------
+        0x00  |  4         | XEX2 magic
+        0x04  |  4         | Module flags.
+        0x08  |  4         | PE data offset.
+        0x0C  |  4         | Reserved
+        0x10  |  4	        | Certificate offset
+        0x14  |  4         | Optional header count"""
         header_sting = '>4s L L L L L'
         self.data_counter = calcsize(header_sting)
-        self.signature, self.module_flags, self.exe_offset, self.unk, self.cert_offset, self.header_count \
+        self.signature, self.module_flags, self.exe_offset, self.unk, self.certificate_offset, self.header_count \
             = unpack(header_sting, self.data[0:self.data_counter])
         if self.signature != b'XEX2':
             print('signature mismatch', self.signature)
@@ -161,17 +258,17 @@ class Xex:
         self.line.output('MODULE_FLAGS', self.hex8(self.module_flags))
         self.line.output('EXE_OFFSET', self.hex8(self.exe_offset), self.exe_offset)
         self.line.output('UNK', self.unk)
-        self.line.output('CERT_OFFSET', self.hex8(self.cert_offset), self.cert_offset)
+        self.line.output('CERTIFICATE_OFFSET', self.hex8(self.certificate_offset), self.certificate_offset)
         self.line.output('OPTIONAL_HEADER_COUNT', self.header_count)
         self.line.outdent()
 
     def loader_decode(self):
-        self.data_counter = self.cert_offset
+        self.data_counter = self.certificate_offset
         loader_string = '> L L 256s L L L 20s L 20s 16s 16s L 20s L L L'
         self.loader_header_size, self.loader_image_size, self.loader_rsa_sig, self.loader_unklength,\
-        self.loader_image_flags, self.loader_load_address, self.loader_section_digest, self.loader_import_table_count,\
-        self.loader_import_table_digest, self.loader_media_id, self.loader_file_key, self.loader_export_table,\
-        self.loader_header_digest, self.loader_game_regions, self.loader_media_flags, self.section_count = \
+            self.loader_image_flags, self.loader_load_address, self.loader_section_digest, self.loader_import_table_count,\
+            self.loader_import_table_digest, self.loader_media_id, self.loader_file_key, self.loader_export_table,\
+            self.loader_header_digest, self.loader_game_regions, self.loader_media_flags, self.section_count = \
             unpack(loader_string, self.data[self.data_counter:self.data_counter + calcsize(loader_string)])
         self.data_counter += calcsize(loader_string)
 
@@ -199,7 +296,7 @@ class Xex:
         optional_header_string = '>L L'
         for i in range(self.header_count):
             self.optional_headers.append(unpack(optional_header_string,
-                 self.data[self.data_counter:self.data_counter+calcsize(optional_header_string)]))
+                self.data[self.data_counter:self.data_counter+calcsize(optional_header_string)]))
             self.data_counter += 8
 
     def optional_headers_reset(self):
@@ -421,22 +518,22 @@ class Xex:
         if self.key(header) == const.XEX_HEADER_GAME_RATINGS:
             game_ratings_string = '> B B B B B B B B B B B B'
             self.esrb, self.pegi, self.pegifi, self.pegipt, self.bbfc, self.cero, self.usk, self.oflcau, \
-            self.oflcnz, self.mrb, self.brazil, self.fpb = unpack(game_ratings_string,
+            self.oflcnz, self.kmrb, self.brazil, self.fpb = unpack(game_ratings_string,
                 self.data[header[1]:header[1] + calcsize(game_ratings_string)])
 
     def game_ratings_reset(self):
-        self.esrb = 0
-        self.pegi = 0
-        self.pegifi = 0
-        self.pegipt = 0
-        self.bbfc = 0
-        self.cero = 0
-        self.usk = 0
-        self.oflcau = 0
-        self.oflcnz = 0
-        self.mrb = 0
-        self.brazil = 0
-        self.fpb = 0
+        self.esrb = const.XEX_RATING_ESRB_UNRATED
+        self.pegi = const.XEX_RATING_PEGI_UNRATED
+        self.pegifi = const.XEX_RATING_PEGI_FI_UNRATED
+        self.pegipt = const.XEX_RATING_PEGI_PT_UNRATED
+        self.bbfc = const.XEX_RATING_BBFC_UNRATED
+        self.cero = const.XEX_RATING_CERO_UNRATED
+        self.usk = const.XEX_RATING_USK_UNRATED
+        self.oflcau = const.XEX_RATING_OFLC_AU_UNRATED
+        self.oflcnz = const.XEX_RATING_OFLC_NZ_UNRATED
+        self.kmrb = const.XEX_RATING_KMRB_UNRATED
+        self.brazil =const.XEX_RATING_BRAZIL_UNRATED
+        self.fpb = const.XEX_RATING_FPB_UNRATED
 
     def game_ratings_show(self):
         self.line.output('XEX_HEADER_GAME_RATINGS')
@@ -450,7 +547,7 @@ class Xex:
         self.line.output('USK', self.usk)
         self.line.output('OFLCAU', self.oflcau)
         self.line.output('OFLCNZ', self.oflcnz)
-        self.line.output('MRB', self.mrb)
+        self.line.output('KMRB', self.kmrb)
         self.line.output('BRAZIL', self.brazil)
         self.line.output('FPB', self.fpb)
         self.line.outdent()
@@ -554,10 +651,10 @@ class Xex:
             self.system_flags = header[1]
 
     def system_flags_reset(self):
-         self.system_flags = 0
+        self.system_flags = 0
 
     def system_flags_show(self):
-         self.line.output('XEX_HEADER_SYSTEM_FLAGS', self.hex8(self.system_flags))
+        self.line.output('XEX_HEADER_SYSTEM_FLAGS', self.hex8(self.system_flags))
 
     def title_workspace_size_decode(self, header):
         if self.key(header) == const.XEX_HEADER_TITLE_WORKSPACE_SIZE:
