@@ -18,9 +18,6 @@ const.XEX_ENCRYPTION = [
     'XEX_ENCRYPTION_NONE',
     'XEX_ENCRYPTION_NORMAL']
 
-const.XEX_ENCRYPTION_NONE = 0
-const.XEX_ENCRYPTION_NORMAL = 1
-
 const.XEX_HEADER_ADDITIONAL_TITLE_MEMORY = 0x00040801
 const.XEX_HEADER_ALTERNATE_TITLE_IDS = 0x000407FF
 const.XEX_HEADER_BASE_REFERENCE = 0x00000405
@@ -52,14 +49,6 @@ const.XEX_HEADER_TITLE_WORKSPACE_SIZE = 0x00040201
 const.XEX_HEADER_TLS_INFO = 0x00020104
 const.XEX_HEADER_XBOX360_LOGO = 0x000405FF
 
-const.XEX_RATING_ESRB_eC = 0x00
-const.XEX_RATING_ESRB_E = 0x02
-const.XEX_RATING_ESRB_E10 = 0x04
-const.XEX_RATING_ESRB_T = 0x06
-const.XEX_RATING_ESRB_M = 0x08
-const.XEX_RATING_ESRB_AO = 0x0E
-const.XEX_RATING_ESRB_UNRATED = 0xFF
-
 const.XEX_RATING_PEGI_3_PLUS = 0
 const.XEX_RATING_PEGI_7_PLUS = 4
 const.XEX_RATING_PEGI_12_PLUS = 9
@@ -81,70 +70,209 @@ const.XEX_RATING_PEGI_PT_16_PLUS = 13
 const.XEX_RATING_PEGI_PT_18_PLUS = 14
 const.XEX_RATING_PEGI_PT_UNRATED = 0xFF
 
-const.XEX_RATING_BBFC_UNIVERSAL = 1
-const.XEX_RATING_BBFC_PG = 5
-const.XEX_RATING_BBFC_3_PLUS = 0
-const.XEX_RATING_BBFC_7_PLUS = 4
-const.XEX_RATING_BBFC_12_PLUS = 9
-const.XEX_RATING_BBFC_15_PLUS = 12
-const.XEX_RATING_BBFC_16_PLUS = 13
-const.XEX_RATING_BBFC_18_PLUS = 14
-const.XEX_RATING_BBFC_UNRATED = 0xFF
-const.XEX_RATING_CERO_A = 0
-const.XEX_RATING_CERO_B = 2
-const.XEX_RATING_CERO_C = 4
-const.XEX_RATING_CERO_D = 6
-const.XEX_RATING_CERO_Z = 8
-const.XEX_RATING_CERO_UNRATED = 0xFF
-
-const.XEX_RATING_USK_ALL = 0
-const.XEX_RATING_USK_6_PLUS = 2
-const.XEX_RATING_USK_12_PLUS = 4
-const.XEX_RATING_USK_16_PLUS = 6
-const.XEX_RATING_USK_18_PLUS = 8
-const.XEX_RATING_USK_UNRATED = 0xFF
-
-const.XEX_RATING_OFLC_AU_G = 0
-const.XEX_RATING_OFLC_AU_PG = 2
-const.XEX_RATING_OFLC_AU_M = 4
-const.XEX_RATING_OFLC_AU_MA15_PLUS = 6
-const.XEX_RATING_OFLC_AU_UNRATED = 0xFF
-
-const.XEX_RATING_OFLC_NZ_G = 0
-const.XEX_RATING_OFLC_NZ_PG = 2
-const.XEX_RATING_OFLC_NZ_M = 4
-const.XEX_RATING_OFLC_NZ_MA15_PLUS = 6
-const.XEX_RATING_OFLC_NZ_UNRATED = 0xFF
-
-const.XEX_RATING_KMRB_ALL = 0
-const.XEX_RATING_KMRB_12_PLUS = 2
-const.XEX_RATING_KMRB_15_PLUS = 4
-const.XEX_RATING_KMRB_18_PLUS = 6
-const.XEX_RATING_KMRB_UNRATED = 0xFF
-
-const.XEX_RATING_BRAZIL_ALL = 0
-const.XEX_RATING_BRAZIL_12_PLUS = 2
-const.XEX_RATING_BRAZIL_14_PLUS = 4
-const.XEX_RATING_BRAZIL_16_PLUS = 5
-const.XEX_RATING_BRAZIL_18_PLUS = 8
-const.XEX_RATING_BRAZIL_UNRATED = 0xFF
-
-const.XEX_RATING_FPB_ALL = 0
-const.XEX_RATING_FPB_PG = 6
-const.XEX_RATING_FPB_10_PLUS = 7
-const.XEX_RATING_FPB_13_PLUS = 10
-const.XEX_RATING_FPB_16_PLUS = 13
-const.XEX_RATING_FPB_18_PLUS = 14
-const.XEX_RATING_FPB_UNRATED = 0xFF
-
 
 class Xex:
+
+    ## The constant for the encryption type none.
+    # const.XEX_ENCRYPTION_NONE = 0
+    const.XEX_ENCRYPTION_NONE = 0
+    ## The constant for the encryption type normal.
+    # const.XEX_ENCRYPTION_NORMAL = 1
+    const.XEX_ENCRYPTION_NORMAL = 1
+
+    ## The constant for the game rating for BBFC (British Board of Film Classification) type universal.
+    # const.XEX_RATING_BBFC_UNIVERSAL = 1
+    const.XEX_RATING_BBFC_UNIVERSAL = 1
+    ## The constant for the game rating for BBFC (British Board of Film Classification) type parental guidance.
+    # const.XEX_RATING_BBFC_PG = 5
+    const.XEX_RATING_BBFC_PG = 5
+    ## The constant for the game rating for BBFC (British Board of Film Classification) type 3 years+.
+    # const.XEX_RATING_BBFC_3_PLUS = 0
+    const.XEX_RATING_BBFC_3_PLUS = 0
+    ## The constant for the game rating for BBFC (British Board of Film Classification) type 7 years+.
+    # const.XEX_RATING_BBFC_7_PLUS = 4
+    const.XEX_RATING_BBFC_7_PLUS = 4
+    ## The constant for the game rating for BBFC (British Board of Film Classification) type 12 years+.
+    # const.XEX_RATING_BBFC_12_PLUS = 9
+    const.XEX_RATING_BBFC_12_PLUS = 9
+    ## The constant for the game rating for BBFC (British Board of Film Classification) type 15 years+.
+    # const.XEX_RATING_BBFC_15_PLUS = 12
+    const.XEX_RATING_BBFC_15_PLUS = 12
+    ## The constant for the game rating for BBFC (British Board of Film Classification) type 16 years+.
+    # const.XEX_RATING_BBFC_16_PLUS = 13
+    const.XEX_RATING_BBFC_16_PLUS = 13
+    ## The constant for the game rating for BBFC (British Board of Film Classification) type 18 years+.
+    # const.XEX_RATING_BBFC_18_PLUS = 14
+    const.XEX_RATING_BBFC_18_PLUS = 14
+    ## The constant for the game rating for BBFC (British Board of Film Classification) type unrated.
+    # const.XEX_RATING_BBFC_UNRATED = 0xFF
+    const.XEX_RATING_BBFC_UNRATED = 0xFF
+
+    ## The constant for the game rating for Brazilian Advisory Rating System type all ages.
+    # const.XEX_RATING_BRAZIL_ALL = 0
+    const.XEX_RATING_BRAZIL_ALL = 0
+    ## The constant for the game rating for Brazilian Advisory Rating System type 12 years+.
+    # const.XEX_RATING_BRAZIL_12_PLUS = 2
+    const.XEX_RATING_BRAZIL_12_PLUS = 2
+    ## The constant for the game rating for Brazilian Advisory Rating System type 14 years+.
+    # const.XEX_RATING_BRAZIL_14_PLUS = 4
+    const.XEX_RATING_BRAZIL_14_PLUS = 4
+    ## The constant for the game rating for Brazilian Advisory Rating System type 16 years+.
+    # const.XEX_RATING_BRAZIL_16_PLUS = 5
+    const.XEX_RATING_BRAZIL_16_PLUS = 5
+    ## The constant for the game rating for Brazilian Advisory Rating System type 18 years+.
+    #  const.XEX_RATING_BRAZIL_18_PLUS = 8
+    const.XEX_RATING_BRAZIL_18_PLUS = 8
+    ## The constant for the game rating for Brazilian Advisory Rating System type unrated.
+    #  const.XEX_RATING_BRAZIL_UNRATED = 0xFF
+    const.XEX_RATING_BRAZIL_UNRATED = 0xFF
+
+    ## The constant for the game rating for CERO (Computer Entertainment Rating Organization) type all ages.
+    # const.XEX_RATING_CERO_A = 0
+    const.XEX_RATING_CERO_A = 0
+    ## The constant for the game rating for CERO (Computer Entertainment Rating Organization) type 12 years+.
+    # const.XEX_RATING_CERO_B = 2
+    const.XEX_RATING_CERO_B = 2
+    ## The constant for the game rating for CERO (Computer Entertainment Rating Organization) type 15 years+.
+    # const.XEX_RATING_CERO_C = 4
+    const.XEX_RATING_CERO_C = 4
+    ## The constant for the game rating for CERO (Computer Entertainment Rating Organization) type 17 years+.
+    # const.XEX_RATING_CERO_D = 6
+    const.XEX_RATING_CERO_D = 6
+    ## The constant for the game rating for CERO (Computer Entertainment Rating Organization) type 18 years+.
+    # const.XEX_RATING_CERO_Z = 8
+    const.XEX_RATING_CERO_Z = 8
+    ## The constant for the game rating for CERO (Computer Entertainment Rating Organization) type unrated.
+    # const.XEX_RATING_CERO_UNRATED = 0xFF
+    const.XEX_RATING_CERO_UNRATED = 0xFF
+
+    ## The constant for the game rating for ESRB (Entertainment Software Rating Board) type early childhood.
+    # const.XEX_RATING_ESRB_eC = 0x00
+    const.XEX_RATING_ESRB_eC = 0x00
+    ## The constant for the game rating for ESRB (Entertainment Software Rating Board) type everyone.
+    # const.XEX_RATING_ESRB_E = 0x02
+    const.XEX_RATING_ESRB_E = 0x02
+    ## The constant for the game rating for ESRB (Entertainment Software Rating Board) type everyone 10 years+.
+    # const.XEX_RATING_ESRB_E10 = 0x04
+    const.XEX_RATING_ESRB_E10 = 0x04
+    ## The constant for the game rating for ESRB (Entertainment Software Rating Board) type teenage.
+    # const.XEX_RATING_ESRB_T = 0x06
+    const.XEX_RATING_ESRB_T = 0x06
+    ## The constant for the game rating for ESRB (Entertainment Software Rating Board) type mature.
+    # const.XEX_RATING_ESRB_M = 0x08
+    const.XEX_RATING_ESRB_M = 0x08
+    ## The constant for the game rating for ESRB (Entertainment Software Rating Board) type adults only.
+    # const.XEX_RATING_ESRB_AO = 0x0E
+    const.XEX_RATING_ESRB_AO = 0x0E
+    ## The constant for the game rating for ESRB (Entertainment Software Rating Board) type unrated.
+    # const.XEX_RATING_ESRB_UNRATED = 0xFF
+    const.XEX_RATING_ESRB_UNRATED = 0xFF
+
+    ## The constant for the game rating for FPB (Film and Publication Board) type all ages.
+    # const.XEX_RATING_FPB_ALL = 0
+    const.XEX_RATING_FPB_ALL = 0
+    ## The constant for the game rating for FPB (Film and Publication Board) type parental guidance.
+    # const.XEX_RATING_FPB_PG = 6
+    const.XEX_RATING_FPB_PG = 6
+    ## The constant for the game rating for FPB (Film and Publication Board) type 10 years+.
+    # const.XEX_RATING_FPB_10_PLUS = 7
+    const.XEX_RATING_FPB_10_PLUS = 7
+    ## The constant for the game rating for FPB (Film and Publication Board) type 13 years+.
+    # const.XEX_RATING_FPB_13_PLUS = 10
+    const.XEX_RATING_FPB_13_PLUS = 10
+    ## The constant for the game rating for FPB (Film and Publication Board) type 16 years+.
+    # const.XEX_RATING_FPB_16_PLUS = 13
+    const.XEX_RATING_FPB_16_PLUS = 13
+    ## The constant for the game rating for FPB (Film and Publication Board) type 18 years+.
+    # const.XEX_RATING_FPB_18_PLUS = 14
+    const.XEX_RATING_FPB_18_PLUS = 14
+    ## The constant for the game rating for FPB (Film and Publication Board) type unrated.
+    # const.XEX_RATING_FPB_UNRATED = 0xFF
+    const.XEX_RATING_FPB_UNRATED = 0xFF
+
+    ## The constant for the game rating for KMRB (Korea Media Rating Board) type all ages.
+    # const.XEX_RATING_KMRB_ALL = 0
+    const.XEX_RATING_KMRB_ALL = 0
+    ## The constant for the game rating for KMRB (Korea Media Rating Board) type 12 years+.
+    # const.XEX_RATING_KMRB_12_PLUS = 2
+    const.XEX_RATING_KMRB_12_PLUS = 2
+    ## The constant for the game rating for KMRB (Korea Media Rating Board) type 15 years+.
+    # const.XEX_RATING_KMRB_15_PLUS = 4
+    const.XEX_RATING_KMRB_15_PLUS = 4
+    ## The constant for the game rating for KMRB (Korea Media Rating Board) type 18 years+.
+    # const.XEX_RATING_KMRB_18_PLUS = 6
+    const.XEX_RATING_KMRB_18_PLUS = 6
+    ## The constant for the game rating for KMRB (Korea Media Rating Board) type unrated.
+    # const.XEX_RATING_KMRB_UNRATED = 0xFF
+    const.XEX_RATING_KMRB_UNRATED = 0xFF
+
+    ## The constant for the game rating for OFLC (Office of Film and Literature Classification) - Australia type general exhibition.
+    # const.XEX_RATING_OFLC_AU_G = 0
+    const.XEX_RATING_OFLC_AU_G = 0
+    ## The constant for the game rating for OFLC (Office of Film and Literature Classification) - Australia type parental guidance.
+    # const.XEX_RATING_OFLC_AU_PG = 2
+    const.XEX_RATING_OFLC_AU_PG = 2
+    ## The constant for the game rating for OFLC (Office of Film and Literature Classification) - Australia type mature audience.
+    # const.XEX_RATING_OFLC_AU_M = 4
+    const.XEX_RATING_OFLC_AU_M = 4
+    ## The constant for the game rating for OFLC (Office of Film and Literature Classification) - Australia type 15 years+.
+    # const.XEX_RATING_OFLC_AU_MA15_PLUS = 6
+    const.XEX_RATING_OFLC_AU_MA15_PLUS = 6
+    ## The constant for the game rating for OFLC (Office of Film and Literature Classification) - Australia type unrated.
+    # const.XEX_RATING_OFLC_AU_UNRATED = 0xFF
+    const.XEX_RATING_OFLC_AU_UNRATED = 0xFF
+
+    ## The constant for the game rating for OFLC (Office of Film and Literature Classification) - New Zealand type general exhibition.
+    # const.XEX_RATING_OFLC_NZ_G = 0
+    const.XEX_RATING_OFLC_NZ_G = 0
+    ## The constant for the game rating for OFLC (Office of Film and Literature Classification) - New Zealand  type parental guidance.
+    # const.XEX_RATING_OFLC_NZ_PG = 2
+    const.XEX_RATING_OFLC_NZ_PG = 2
+    ## The constant for the game rating for OFLC (Office of Film and Literature Classification) - New Zealand  type mature audience.
+    # const.XEX_RATING_OFLC_NZ_M = 4
+    const.XEX_RATING_OFLC_NZ_M = 4
+    ## The constant for the game rating for OFLC (Office of Film and Literature Classification) - New Zealand  type 15 years+.
+    # const.XEX_RATING_OFLC_NZ_MA15_PLUS = 6
+    const.XEX_RATING_OFLC_NZ_MA15_PLUS = 6
+    ## The constant for the game rating for OFLC (Office of Film and Literature Classification) - New Zealand  type unrated.
+    # const.XEX_RATING_OFLC_NZ_UNRATED = 0xFF
+    const.XEX_RATING_OFLC_NZ_UNRATED = 0xFF
+
+    ## The constant for the game rating for USK (Unterhaltungssoftware SelbstKontrolle) type all ages.
+    # const.XEX_RATING_USK_ALL = 0
+    const.XEX_RATING_USK_ALL = 0
+    ## The constant for the game rating for USK (Unterhaltungssoftware SelbstKontrolle) type 6 years+.
+    # const.XEX_RATING_USK_6_PLUS = 2
+    const.XEX_RATING_USK_6_PLUS = 2
+    ## The constant for the game rating for USK (Unterhaltungssoftware SelbstKontrolle) type 12 years+.
+    # const.XEX_RATING_USK_12_PLUS = 4
+    const.XEX_RATING_USK_12_PLUS = 4
+    ## The constant for the game rating for USK (Unterhaltungssoftware SelbstKontrolle) type 16 years+.
+    # const.XEX_RATING_USK_16_PLUS = 6
+    const.XEX_RATING_USK_16_PLUS = 6
+    ## The constant for the game rating for USK (Unterhaltungssoftware SelbstKontrolle) type 18 years+.
+    # const.XEX_RATING_USK_18_PLUS = 8
+    const.XEX_RATING_USK_18_PLUS = 8
+    ## The constant for the game rating for USK (Unterhaltungssoftware SelbstKontrolle) type unrated.
+    # const.XEX_RATING_USK_UNRATED = 0xFF
+    const.XEX_RATING_USK_UNRATED = 0xFF
+
+    ## The constant for the section type code.
+    # const.XEX_SECTION_CODE = 1
+    const.XEX_SECTION_CODE = 1
+    ## The constant for the section type data.
+    # const.XEX_SECTION_DATA = 2
+    const.XEX_SECTION_DATA = 2
+    ## The constant for the section type readonly data.
+    # const.XEX_SECTION_READONLY_DATA = 3
+    const.XEX_SECTION_READONLY_DATA = 3
 
     RETAIL_KEY = b'\x20\xB1\x85\xA5\x9D\x28\xFD\xC3\x40\x58\x3F\xBB\x08\x96\xBF\x91'
     DEVKIT_KEY = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 
     def __init__(self, filename):
-        """The constructor."""
+        """The constructor.
+        @param filename The XEX file name."""
         self.data_counter = 0
         if not filename:
             print('invalid xex provided')
@@ -235,14 +363,14 @@ class Xex:
     def header_decode(self):
         """To decode the XEX header.
 
-        Offset | Length	| Type Information
+        Offset | Bits	    | Type Information
         ---------|-----------|------------------------
-        0x00  |  4         | XEX2 magic
-        0x04  |  4         | Module flags.
-        0x08  |  4         | PE data offset.
-        0x0C  |  4         | Reserved
-        0x10  |  4	        | Certificate offset
-        0x14  |  4         | Optional header count"""
+        0x00  |  32       | XEX2 magic.
+        0x04  |  32       | Module flags.
+        0x08  |  32       | PE data offset.
+        0x0C  |  32       | Reserved.
+        0x10  |  32       | Certificate offset.
+        0x14  |  32       | Optional header count."""
         header_sting = '>4s L L L L L'
         self.data_counter = calcsize(header_sting)
         self.signature, self.module_flags, self.exe_offset, self.unk, self.certificate_offset, self.header_count \
@@ -303,6 +431,14 @@ class Xex:
         self.optional_headers = []
 
     def sections_decode(self):
+        """To decode the XEX sections.
+
+        Offset | Bits	    | Type Information
+        ---------|-----------|------------------------
+        0x00  |  32       | Page size.
+        0x20  |  4         | Section Type.
+        0x24  |  28       | Page count.
+        0x3C  |  160     | Digest."""
         section_string = '> L L 20s'
         for section in range(self.section_count):
             self.sections.append(unpack(section_string, self.data[self.data_counter:self.data_counter + calcsize(section_string)]))
@@ -522,17 +658,30 @@ class Xex:
                 self.data[header[1]:header[1] + calcsize(game_ratings_string)])
 
     def game_ratings_reset(self):
+        """To reset the game ratings to their default values."""
+        ## The game rating for ESRB (Entertainment Software Rating Board).
         self.esrb = const.XEX_RATING_ESRB_UNRATED
+        ## The game rating for PEGI (Pan European Game Information).
         self.pegi = const.XEX_RATING_PEGI_UNRATED
+        ## The game rating for PEGI (Pan European Game Information) - Finland.
         self.pegifi = const.XEX_RATING_PEGI_FI_UNRATED
+        ## The game rating for PEGI (Pan European Game Information) - Portugal.
         self.pegipt = const.XEX_RATING_PEGI_PT_UNRATED
+        ## The game rating for BBFC (British Board of Film Classification).
         self.bbfc = const.XEX_RATING_BBFC_UNRATED
+        ## The game rating for CERO (Computer Entertainment Rating Organization).
         self.cero = const.XEX_RATING_CERO_UNRATED
+        ## The game rating for USK (Unterhaltungssoftware SelbstKontrolle).
         self.usk = const.XEX_RATING_USK_UNRATED
+        ## The game rating for OFLC (Office of Film and Literature Classification) - Australia.
         self.oflcau = const.XEX_RATING_OFLC_AU_UNRATED
+        ## The game rating for OFLC (Office of Film and Literature Classification) - New Zealand.
         self.oflcnz = const.XEX_RATING_OFLC_NZ_UNRATED
+        ## The game rating for KMRB (Korea Media Rating Board).
         self.kmrb = const.XEX_RATING_KMRB_UNRATED
+        ## The game rating for Brazilian Advisory Rating System.
         self.brazil =const.XEX_RATING_BRAZIL_UNRATED
+        ## The game rating for FPB (Film and Publication Board).
         self.fpb = const.XEX_RATING_FPB_UNRATED
 
     def game_ratings_show(self):

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import sys
-from xex import  Xex
+from xex import Xex
 
 if __name__ == '__main__':
     x = Xex(sys.argv[1])
