@@ -49,27 +49,6 @@ const.XEX_HEADER_TITLE_WORKSPACE_SIZE = 0x00040201
 const.XEX_HEADER_TLS_INFO = 0x00020104
 const.XEX_HEADER_XBOX360_LOGO = 0x000405FF
 
-const.XEX_RATING_PEGI_3_PLUS = 0
-const.XEX_RATING_PEGI_7_PLUS = 4
-const.XEX_RATING_PEGI_12_PLUS = 9
-const.XEX_RATING_PEGI_16_PLUS = 13
-const.XEX_RATING_PEGI_18_PLUS = 14
-const.XEX_RATING_PEGI_UNRATED = 0xFF
-
-const.XEX_RATING_PEGI_FI_3_PLUS = 0
-const.XEX_RATING_PEGI_FI_7_PLUS = 4
-const.XEX_RATING_PEGI_FI_11_PLUS = 8
-const.XEX_RATING_PEGI_FI_15_PLUS = 12
-const.XEX_RATING_PEGI_FI_18_PLUS = 14
-const.XEX_RATING_PEGI_FI_UNRATED = 0xFF
-
-const.XEX_RATING_PEGI_PT_4_PLUS = 1
-const.XEX_RATING_PEGI_PT_6_PLUS = 3
-const.XEX_RATING_PEGI_PT_12_PLUS = 9
-const.XEX_RATING_PEGI_PT_16_PLUS = 13
-const.XEX_RATING_PEGI_PT_18_PLUS = 14
-const.XEX_RATING_PEGI_PT_UNRATED = 0xFF
-
 
 class Xex:
 
@@ -238,6 +217,63 @@ class Xex:
     # const.XEX_RATING_OFLC_NZ_UNRATED = 0xFF
     const.XEX_RATING_OFLC_NZ_UNRATED = 0xFF
 
+    ## The constant for the game rating for PEGI (Pan European Game Information) type 3 years+.
+    # const.XEX_RATING_PEGI_3_PLUS = 0
+    const.XEX_RATING_PEGI_3_PLUS = 0
+    ## The constant for the game rating for PEGI (Pan European Game Information) type 7 years+.
+    # const.XEX_RATING_PEGI_7_PLUS = 4
+    const.XEX_RATING_PEGI_7_PLUS = 4
+    ## The constant for the game rating for PEGI (Pan European Game Information) type 12 years+.
+    # const.XEX_RATING_PEGI_12_PLUS = 9
+    const.XEX_RATING_PEGI_12_PLUS = 9
+    ## The constant for the game rating for PEGI (Pan European Game Information) type 16 years+.
+    # const.XEX_RATING_PEGI_16_PLUS = 13
+    const.XEX_RATING_PEGI_16_PLUS = 13
+    ## The constant for the game rating for PEGI (Pan European Game Information) type 18 years+.
+    # const.XEX_RATING_PEGI_18_PLUS = 14
+    const.XEX_RATING_PEGI_18_PLUS = 14
+    ## The constant for the game rating for PEGI (Pan European Game Information) type unrated.
+    # const.XEX_RATING_PEGI_UNRATED = 0xFF
+    const.XEX_RATING_PEGI_UNRATED = 0xFF
+
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Finland type 3 years+.
+    # const.XEX_RATING_PEGI_FI_3_PLUS = 0
+    const.XEX_RATING_PEGI_FI_3_PLUS = 0
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Finland type 7 years+.
+    # const.XEX_RATING_PEGI_FI_7_PLUS = 4
+    const.XEX_RATING_PEGI_FI_7_PLUS = 4
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Finland type 11 years+.
+    # const.XEX_RATING_PEGI_FI_11_PLUS = 8
+    const.XEX_RATING_PEGI_FI_11_PLUS = 8
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Finland type 15 years+.
+    # const.XEX_RATING_PEGI_FI_15_PLUS = 12
+    const.XEX_RATING_PEGI_FI_15_PLUS = 12
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Finland type 18 years+.
+    # const.XEX_RATING_PEGI_FI_18_PLUS = 14
+    const.XEX_RATING_PEGI_FI_18_PLUS = 14
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Finland type unrated.
+    # const.XEX_RATING_PEGI_FI_UNRATED = 0xFF
+    const.XEX_RATING_PEGI_FI_UNRATED = 0xFF
+
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Portugal type 4 years+.
+    # const.XEX_RATING_PEGI_PT_4_PLUS = 1
+    const.XEX_RATING_PEGI_PT_4_PLUS = 1
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Portugal type 6 years+.
+    # const.XEX_RATING_PEGI_PT_6_PLUS = 3
+    const.XEX_RATING_PEGI_PT_6_PLUS = 3
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Portugal type 12 years+.
+    # const.XEX_RATING_PEGI_PT_12_PLUS = 9
+    const.XEX_RATING_PEGI_PT_12_PLUS = 9
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Portugal type 16 years+.
+    # const.XEX_RATING_PEGI_PT_16_PLUS = 13
+    const.XEX_RATING_PEGI_PT_16_PLUS = 13
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Portugal type 18 years+.
+    # const.XEX_RATING_PEGI_PT_18_PLUS = 14
+    const.XEX_RATING_PEGI_PT_18_PLUS = 14
+    ## The constant for the game rating for PEGI (Pan European Game Information) - Portugal type unrated.
+    # const.XEX_RATING_PEGI_PT_UNRATED = 0xFF
+    const.XEX_RATING_PEGI_PT_UNRATED = 0xFF
+
     ## The constant for the game rating for USK (Unterhaltungssoftware SelbstKontrolle) type all ages.
     # const.XEX_RATING_USK_ALL = 0
     const.XEX_RATING_USK_ALL = 0
@@ -267,8 +303,10 @@ class Xex:
     # const.XEX_SECTION_READONLY_DATA = 3
     const.XEX_SECTION_READONLY_DATA = 3
 
-    RETAIL_KEY = b'\x20\xB1\x85\xA5\x9D\x28\xFD\xC3\x40\x58\x3F\xBB\x08\x96\xBF\x91'
-    DEVKIT_KEY = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+    ## The retail encryption key.
+    XEX_RETAIL_KEY = b'\x20\xB1\x85\xA5\x9D\x28\xFD\xC3\x40\x58\x3F\xBB\x08\x96\xBF\x91'
+    ## The development kit encryption key.
+    XEX_DEVKIT_KEY = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 
     def __init__(self, filename):
         """The constructor.
@@ -383,10 +421,10 @@ class Xex:
         self.line.output('XEX_HEADER')
         self.line.indent()
         self.line.output('SIGNATURE', self.signature)
-        self.line.output('MODULE_FLAGS', self.hex8(self.module_flags))
-        self.line.output('EXE_OFFSET', self.hex8(self.exe_offset), self.exe_offset)
+        self.line.output_hex8('MODULE_FLAGS', self.module_flags)
+        self.line.output_hex8('EXE_OFFSET', self.exe_offset, self.exe_offset)
         self.line.output('UNK', self.unk)
-        self.line.output('CERTIFICATE_OFFSET', self.hex8(self.certificate_offset), self.certificate_offset)
+        self.line.output_hex8('CERTIFICATE_OFFSET', self.certificate_offset, self.certificate_offset)
         self.line.output('OPTIONAL_HEADER_COUNT', self.header_count)
         self.line.outdent()
 
@@ -403,12 +441,12 @@ class Xex:
     def loader_show(self):
         self.line.output('XEX_LOADER')
         self.line.indent()
-        self.line.output('HEADER_SIZE', self.hex8(self.loader_header_size), self.loader_header_size)
-        self.line.output('IMAGE_SIZE', self.hex8(self.loader_image_size), self.loader_image_size)
+        self.line.output_hex8('HEADER_SIZE', self.loader_header_size, self.loader_header_size)
+        self.line.output_hex8('IMAGE_SIZE', self.loader_image_size, self.loader_image_size)
         self.line.output('RSA_SIG', self.loader_rsa_sig)
         self.line.output('UNK_LENGTH', self.loader_unklength)
-        self.line.output('IMAGE_FLAGS', self.hex8(self.loader_image_flags))
-        self.line.output('LOAD_ADDRESS', self.hex8(self.loader_load_address))
+        self.line.output_hex8('IMAGE_FLAGS', self.loader_image_flags)
+        self.line.output_hex8('LOAD_ADDRESS', self.loader_load_address)
         self.line.output('SECTION_DIGEST', self.loader_section_digest)
         self.line.output('IMPORT_TABLE_COUNT', self.loader_import_table_count)
         self.line.output('IMPORT_TABLE_DIGEST', self.loader_import_table_digest)
@@ -416,8 +454,8 @@ class Xex:
         self.line.output('FILE_KEY', self.loader_file_key)
         self.line.output('EXPORT_TABLE', self.loader_export_table)
         self.line.output('HEADER_DIGEST', self.loader_header_digest)
-        self.line.output('GAME_REGIONS', self.hex8(self.loader_game_regions))
-        self.line.output('MEDIA_FLAGS', self.hex8(self.loader_media_flags))
+        self.line.output_hex8('GAME_REGIONS', self.loader_game_regions)
+        self.line.output_hex8('MEDIA_FLAGS', self.loader_media_flags)
         self.line.outdent()
 
     def optional_headers_decode(self):
@@ -428,6 +466,7 @@ class Xex:
             self.data_counter += 8
 
     def optional_headers_reset(self):
+        """To reset the optional headers to their default values."""
         self.optional_headers = []
 
     def sections_decode(self):
@@ -445,6 +484,7 @@ class Xex:
             self.data_counter += calcsize(section_string)
 
     def sections_reset(self):
+        """To reset the sections their default values."""
         self.sections = []
 
     def sections_show(self):
@@ -459,6 +499,7 @@ class Xex:
             pass
 
     def additional_title_memory_reset(self):
+        """To reset the additional title memory to their default values."""
         pass
 
     def additional_title_memory_show(self):
@@ -469,6 +510,7 @@ class Xex:
             pass
 
     def alternate_title_ids_reset(self):
+        """To reset the alternate title ids to their default values."""
         pass
 
     def alternate_title_ids_show(self):
@@ -479,6 +521,7 @@ class Xex:
             pass
 
     def base_reference_reset(self):
+        """To reset the base reference to their default values."""
         pass
 
     def base_reference_show(self):
@@ -489,6 +532,7 @@ class Xex:
             pass
 
     def bounding_path_reset(self):
+        """To reset the bounding patch to their default values."""
         pass
 
     def bounding_path_show(self):
@@ -499,6 +543,7 @@ class Xex:
             pass
 
     def checksum_timestamp_reset(self):
+        """To reset the checksum timestamp to their default values."""
         pass
 
     def checksum_timestamp_show(self):
@@ -509,6 +554,7 @@ class Xex:
             pass
 
     def default_filesystem_cache_size_reset(self):
+        """To reset the default filesystem cache size to their default values."""
         pass
 
     def default_filesystem_cache_size_show(self):
@@ -519,6 +565,7 @@ class Xex:
             self.exe_heap_size = unpack('>L', self.data[header[1]:header[1] + 4])[0]
 
     def default_heap_size_reset(self):
+        """To reset the heap size to their default values."""
         self.exe_heap_size = 0
 
     def default_heap_size_show(self):
@@ -529,6 +576,7 @@ class Xex:
             self.exe_stack_size = unpack('>L', self.data[header[1]:header[1] + 4])[0]
 
     def default_stack_size_reset(self):
+        """To reset the default stack size to their default values."""
         self.exe_stack_size = 0
 
     def default_stack_size_show(self):
@@ -539,6 +587,7 @@ class Xex:
             pass
 
     def delta_patch_descriptor_reset(self):
+        """To reset the delta patch descriptor to their default values."""
         pass
 
     def delta_patch_descriptor_show(self):
@@ -549,6 +598,7 @@ class Xex:
             pass
 
     def device_id_reset(self):
+        """To reset the device id to their default values."""
         pass
 
     def device_id_show(self):
@@ -559,6 +609,7 @@ class Xex:
             pass
 
     def enabled_for_callcap_reset(self):
+        """To reset the enabled for callcap to their default values."""
         pass
 
     def enabled_for_callcap_show(self):
@@ -569,6 +620,7 @@ class Xex:
             pass
 
     def enabled_for_fastcap_reset(self):
+        """To reset the enabled for fastcap to their default values."""
         pass
 
     def enabled_for_fastcap_show(self):
@@ -579,10 +631,11 @@ class Xex:
             self.exe_entry_point = header[1]
 
     def entry_point_reset(self):
+        """To reset the entry point to their default values."""
         self.exe_entry_point = 0
 
     def entry_point_show(self):
-        self.line.output('XEX_HEADER_ENTRY_POINT', self.hex8(self.exe_entry_point))
+        self.line.output_hex8('XEX_HEADER_ENTRY_POINT', self.exe_entry_point)
 
     def execution_info_decode(self, header):
         if self.key(header) == const.XEX_HEADER_EXECUTION_INFO:
@@ -592,6 +645,7 @@ class Xex:
                 header[1] + calcsize(execution_info_string)])
 
     def execution_info_reset(self):
+        """To reset the execution info to their default values."""
         self.media_id = 0
         self.version = 0
         self.base_version = 0
@@ -621,6 +675,7 @@ class Xex:
             pass
 
     def exports_by_name_reset(self):
+        """To reset the exports by name to their default values."""
         pass
 
     def exports_by_name_show(self):
@@ -638,6 +693,7 @@ class Xex:
                 self.window_size, self.block_size, self.block_hash = unpack('> L L 20s', self.data[header[1] + 8: header[1] + 36])
 
     def file_format_info_reset(self):
+        """To reset the file format info to their default values."""
         self.info_size = 0
         self.encryption_type = 0
         self.compression_type = 0
@@ -685,20 +741,170 @@ class Xex:
         self.fpb = const.XEX_RATING_FPB_UNRATED
 
     def game_ratings_show(self):
+        """To display the game ratings."""
         self.line.output('XEX_HEADER_GAME_RATINGS')
         self.line.indent()
-        self.line.output('ESRB', self.esrb)
-        self.line.output('PEGI', self.pegi)
-        self.line.output('PEGIFI', self.pegifi)
-        self.line.output('PEGIPT', self.pegipt)
-        self.line.output('BBFC', self.bbfc)
-        self.line.output('CERO', self.cero)
-        self.line.output('USK', self.usk)
-        self.line.output('OFLCAU', self.oflcau)
-        self.line.output('OFLCNZ', self.oflcnz)
-        self.line.output('KMRB', self.kmrb)
-        self.line.output('BRAZIL', self.brazil)
-        self.line.output('FPB', self.fpb)
+
+        if self.esrb == const.XEX_RATING_ESRB_eC:
+            self.line.output_hex2('ESRB', self.esrb, 'XEX_RATING_ESRB_eC')
+        elif self.esrb == const.XEX_RATING_ESRB_E:
+            self.line.output_hex2('ESRB', self.esrb, 'XEX_RATING_ESRB_E')
+        elif self.esrb == const.XEX_RATING_ESRB_E10:
+            self.line.output_hex2('ESRB', self.esrb, 'XEX_RATING_ESRB_E10')
+        elif self.esrb == const.XEX_RATING_ESRB_T:
+            self.line.output_hex2('ESRB', self.esrb, 'XEX_RATING_ESRB_T')
+        elif self.esrb == const.XEX_RATING_ESRB_M:
+            self.line.output_hex2('ESRB', self.esrb, 'XEX_RATING_ESRB_M')
+        elif self.esrb == const.XEX_RATING_ESRB_AO:
+            self.line.output_hex2('ESRB', self.esrb, 'XEX_RATING_ESRB_AO')
+        elif self.esrb == const.XEX_RATING_ESRB_UNRATED:
+            self.line.output_hex2('ESRB', self.esrb, 'XEX_RATING_ESRB_UNRATED')
+
+        if self.pegi == const.XEX_RATING_PEGI_3_PLUS:
+            self.line.output_hex2('PEGI', self.pegi, 'XEX_RATING_PEGI_3_PLUS')
+        elif self.pegi == const.XEX_RATING_PEGI_7_PLUS:
+            self.line.output_hex2('PEGI', self.pegi, 'XEX_RATING_PEGI_7_PLUS')
+        elif self.pegi == const.XEX_RATING_PEGI_12_PLUS:
+            self.line.output_hex2('PEGI', self.pegi, 'XEX_RATING_PEGI_12_PLUS')
+        elif self.pegi == const.XEX_RATING_PEGI_16_PLUS:
+            self.line.output_hex2('PEGI', self.pegi, 'XEX_RATING_PEGI_16_PLUS')
+        elif self.pegi == const.XEX_RATING_PEGI_18_PLUS:
+            self.line.output_hex2('PEGI', self.pegi, 'XEX_RATING_PEGI_18_PLUS')
+        elif self.pegi == const.XEX_RATING_PEGI_UNRATED:
+            self.line.output_hex2('PEGI', self.pegi, 'XEX_RATING_PEGI_UNRATED')
+
+        if self.pegifi == const.XEX_RATING_PEGI_FI_3_PLUS:
+            self.line.output_hex2('PEGIFI', self.pegifi, 'XEX_RATING_PEGI_FI_3_PLUS')
+        elif self.pegifi == const.XEX_RATING_PEGI_FI_7_PLUS:
+            self.line.output_hex2('PEGIFI', self.pegifi, 'XEX_RATING_PEGI_FI_7_PLUS')
+        elif self.pegifi == const.XEX_RATING_PEGI_FI_11_PLUS:
+            self.line.output_hex2('PEGIFI', self.pegifi, 'XEX_RATING_PEGI_FI_11_PLUS')
+        elif self.pegifi == const.XEX_RATING_PEGI_FI_15_PLUS:
+            self.line.output_hex2('PEGIFI', self.pegifi, 'XEX_RATING_PEGI_FI_15_PLUS')
+        elif self.pegifi == const.XEX_RATING_PEGI_FI_18_PLUS:
+            self.line.output_hex2('PEGIFI', self.pegifi, 'XEX_RATING_PEGI_FI_18_PLUS')
+        elif self.pegifi == const.XEX_RATING_PEGI_FI_UNRATED:
+            self.line.output_hex2('PEGIFI', self.pegifi, 'XEX_RATING_PEGI_FI_UNRATED')
+
+        if self.pegipt == const.XEX_RATING_PEGI_PT_4_PLUS:
+            self.line.output_hex2('PEGIPT', self.pegipt, 'XEX_RATING_PEGI_PT_4_PLUS')
+        elif self.pegipt == const.XEX_RATING_PEGI_PT_6_PLUS:
+            self.line.output_hex2('PEGIPT', self.pegipt, 'XEX_RATING_PEGI_PT_6_PLUS')
+        elif self.pegipt == const.XEX_RATING_PEGI_PT_12_PLUS:
+            self.line.output_hex2('PEGIPT', self.pegipt, 'XEX_RATING_PEGI_PT_12_PLUS')
+        elif self.pegipt == const.XEX_RATING_PEGI_PT_16_PLUS:
+            self.line.output_hex2('PEGIPT', self.pegipt, 'XEX_RATING_PEGI_PT_16_PLUS')
+        elif self.pegipt == const.XEX_RATING_PEGI_PT_18_PLUS:
+            self.line.output_hex2('PEGIPT', self.pegipt, 'XEX_RATING_PEGI_PT_18_PLUS')
+        elif self.pegipt == const.XEX_RATING_PEGI_PT_UNRATED:
+            self.line.output_hex2('PEGIPT', self.pegipt, 'XEX_RATING_PEGI_PT_UNRATED')
+
+        if self.bbfc == const.XEX_RATING_BBFC_UNIVERSAL:
+            self.line.output_hex2('BBFC', self.bbfc, 'XEX_RATING_BBFC_UNIVERSAL')
+        elif self.bbfc == const.XEX_RATING_BBFC_PG:
+            self.line.output_hex2('BBFC', self.bbfc,  'XEX_RATING_BBFC_PG')
+        elif self.bbfc == const.XEX_RATING_BBFC_3_PLUS:
+            self.line.output_hex2('BBFC', self.bbfc, 'XEX_RATING_BBFC_3_PLUS')
+        elif self.bbfc == const.XEX_RATING_BBFC_7_PLUS:
+            self.line.output_hex2('BBFC', self.bbfc, 'XEX_RATING_BBFC_7_PLUS')
+        elif self.bbfc == const.XEX_RATING_BBFC_12_PLUS:
+            self.line.output_hex2('BBFC', self.bbfc, 'XEX_RATING_BBFC_12_PLUS')
+        elif self.bbfc == const.XEX_RATING_BBFC_15_PLUS:
+            self.line.output_hex2('BBFC', self.bbfc, 'XEX_RATING_BBFC_15_PLUS')
+        elif self.bbfc == const.XEX_RATING_BBFC_16_PLUS:
+            self.line.output_hex2('BBFC', self.bbfc, 'XEX_RATING_BBFC_16_PLUS')
+        elif self.bbfc == const.XEX_RATING_BBFC_18_PLUS:
+            self.line.output_hex2('BBFC', self.bbfc, 'XEX_RATING_BBFC_18_PLUS')
+        elif self.bbfc == const.XEX_RATING_BBFC_UNRATED:
+            self.line.output_hex2('BBFC', self.bbfc, 'XEX_RATING_BBFC_UNRATED')
+
+        if self.bbfc == const.XEX_RATING_CERO_A:
+            self.line.output_hex2('CERO', self.bbfc, 'XEX_RATING_CERO_A')
+        elif self.bbfc == const.XEX_RATING_CERO_B:
+            self.line.output_hex2('CERO', self.bbfc, 'XEX_RATING_CERO_B')
+        elif self.bbfc == const.XEX_RATING_CERO_C:
+            self.line.output_hex2('CERO', self.bbfc, 'XEX_RATING_CERO_C')
+        elif self.bbfc == const.XEX_RATING_CERO_D:
+            self.line.output_hex2('CERO', self.bbfc, 'XEX_RATING_CERO_D')
+        elif self.bbfc == const.XEX_RATING_CERO_Z:
+            self.line.output_hex2('CERO', self.bbfc, 'XEX_RATING_CERO_Z')
+        elif self.bbfc == const.XEX_RATING_CERO_UNRATED:
+            self.line.output_hex2('CERO', self.bbfc, 'XEX_RATING_CERO_UNRATED')
+
+        if self.usk == const.XEX_RATING_USK_ALL:
+            self.line.output_hex2('USK', self.usk, 'XEX_RATING_USK_ALL')
+        elif self.usk == const.XEX_RATING_USK_6_PLUS:
+            self.line.output_hex2('USK', self.usk, 'XEX_RATING_USK_6_PLUS')
+        elif self.usk == const.XEX_RATING_USK_12_PLUS:
+            self.line.output_hex2('USK', self.usk, 'XEX_RATING_USK_12_PLUS')
+        elif self.usk == const.XEX_RATING_USK_16_PLUS:
+            self.line.output_hex2('USK', self.usk, 'XEX_RATING_USK_16_PLUS')
+        elif self.usk == const.XEX_RATING_USK_18_PLUS:
+            self.line.output_hex2('USK', self.usk, 'XEX_RATING_USK_18_PLUS')
+        elif self.usk ==const.XEX_RATING_USK_UNRATED:
+            self.line.output_hex2('USK', self.usk, 'XEX_RATING_USK_UNRATED')
+
+        if self.oflcau == const.XEX_RATING_OFLC_AU_G:
+            self.line.output_hex2('OFLCAU', self.oflcau, 'XEX_RATING_OFLC_AU_G')
+        elif self.oflcau == const.XEX_RATING_OFLC_AU_PG:
+            self.line.output_hex2('OFLCAU', self.oflcau, 'XEX_RATING_OFLC_AU_PG')
+        elif self.oflcau == const.XEX_RATING_OFLC_AU_M:
+            self.line.output_hex2('OFLCAU', self.oflcau, 'XEX_RATING_OFLC_AU_M')
+        elif self.oflcau == const.XEX_RATING_OFLC_AU_MA15_PLUS:
+            self.line.output_hex2('OFLCAU', self.oflcau, 'XEX_RATING_OFLC_AU_MA15_PLUS')
+        elif self.oflcau == const.XEX_RATING_OFLC_AU_UNRATED:
+            self.line.output_hex2('OFLCAU', self.oflcau, 'XEX_RATING_OFLC_AU_UNRATED')
+
+        if self.oflcnz == const.XEX_RATING_OFLC_NZ_G:
+            self.line.output_hex2('OFLCNZ', self.oflcnz, 'XEX_RATING_OFLC_NZ_G')
+        elif self.oflcnz == const.XEX_RATING_OFLC_NZ_PG:
+            self.line.output_hex2('OFLCNZ', self.oflcnz, 'XEX_RATING_OFLC_NZ_PG')
+        elif self.oflcnz == const.XEX_RATING_OFLC_NZ_M:
+            self.line.output_hex2('OFLCNZ', self.oflcnz, 'XEX_RATING_OFLC_NZ_M')
+        elif self.oflcnz == const.XEX_RATING_OFLC_NZ_MA15_PLUS:
+            self.line.output_hex2('OFLCNZ', self.oflcnz, 'XEX_RATING_OFLC_NZ_MA15_PLUS')
+        elif self.oflcnz == const.XEX_RATING_OFLC_NZ_UNRATED:
+            self.line.output_hex2('OFLCNZ', self.oflcnz, 'XEX_RATING_OFLC_NZ_UNRATED')
+
+        if self.kmrb == const.XEX_RATING_KMRB_ALL:
+            self.line.output_hex2('KMRB', self.kmrb, 'XEX_RATING_KMRB_ALL')
+        elif self.kmrb == const.XEX_RATING_KMRB_12_PLUS:
+            self.line.output_hex2('KMRB', self.kmrb, 'XEX_RATING_KMRB_12_PLUS')
+        elif self.kmrb == const.XEX_RATING_KMRB_15_PLUS:
+            self.line.output_hex2('KMRB', self.kmrb, 'XEX_RATING_KMRB_15_PLUS')
+        elif self.kmrb == const.XEX_RATING_KMRB_18_PLUS:
+            self.line.output_hex2('KMRB', self.kmrb, 'XEX_RATING_KMRB_18_PLUS')
+        elif self.kmrb == const.XEX_RATING_KMRB_UNRATED:
+            self.line.output_hex2('KMRB', self.kmrb, 'XEX_RATING_KMRB_UNRATED')
+
+        if self.brazil == const.XEX_RATING_BRAZIL_ALL:
+            self.line.output_hex2('BRAZIL', self.brazil, 'XEX_RATING_BRAZIL_ALL')
+        elif self.brazil == const.XEX_RATING_BRAZIL_12_PLUS:
+            self.line.output_hex2('BRAZIL', self.brazil, 'XEX_RATING_BRAZIL_12_PLUS')
+        elif self.brazil == const.XEX_RATING_BRAZIL_14_PLUS:
+            self.line.output_hex2('BRAZIL', self.brazil, 'XEX_RATING_BRAZIL_14_PLUS')
+        elif self.brazil == const.XEX_RATING_BRAZIL_16_PLUS:
+            self.line.output_hex2('BRAZIL', self.brazil, 'XEX_RATING_BRAZIL_16_PLUS')
+        elif self.brazil == const.XEX_RATING_BRAZIL_18_PLUS:
+            self.line.output_hex2('BRAZIL', self.brazil, 'XEX_RATING_BRAZIL_18_PLUS')
+        elif self.brazil == const.XEX_RATING_BRAZIL_UNRATED:
+            self.line.output_hex2('BRAZIL', self.brazil, 'XEX_RATING_BRAZIL_UNRATED')
+
+        if self.fpb == const.XEX_RATING_FPB_ALL:
+            self.line.output_hex2('FPB', self.fpb, 'XEX_RATING_FPB_ALL')
+        elif self.fpb == const.XEX_RATING_FPB_PG:
+            self.line.output_hex2('FPB', self.fpb, 'XEX_RATING_FPB_PG')
+        elif self.fpb == const.XEX_RATING_FPB_10_PLUS:
+            self.line.output_hex2('FPB', self.fpb, 'XEX_RATING_FPB_10_PLUS')
+        elif self.fpb == const.XEX_RATING_FPB_13_PLUS:
+            self.line.output_hex2('FPB', self.fpb, 'XEX_RATING_FPB_13_PLUS')
+        elif self.fpb == const.XEX_RATING_FPB_16_PLUS:
+            self.line.output_hex2('FPB', self.fpb, 'XEX_RATING_FPB_16_PLUS')
+        elif self.fpb == const.XEX_RATING_FPB_18_PLUS:
+            self.line.output_hex2('FPB', self.fpb, 'XEX_RATING_FPB_18_PLUS')
+        elif self.fpb == const.XEX_RATING_FPB_UNRATED:
+            self.line.output_hex2('FPB', self.fpb, 'XEX_RATING_FPB_UNRATED')
+
         self.line.outdent()
 
     def image_base_address_decode(self, header):
@@ -706,16 +912,18 @@ class Xex:
             self.exe_address = header[1]
 
     def image_base_address_reset(self):
+        """To reset the image base address to their default values."""
         self.exe_address = 0
 
     def image_base_address_show(self):
-        self.line.output('XEX_HEADER_IMAGE_BASE_ADDRESS', self.hex8(self.exe_address))
+        self.line.output_hex8('XEX_HEADER_IMAGE_BASE_ADDRESS', self.exe_address)
 
     def import_libraries_decode(self, header):
         if self.key(header) == const.XEX_HEADER_IMPORT_LIBRARIES:
             pass
 
     def import_libraries_reset(self):
+        """To reset the import libraries to their default values."""
         pass
 
     def import_libraries_show(self):
@@ -726,6 +934,7 @@ class Xex:
             pass
 
     def lan_key_reset(self):
+        """To reset the LAN key to their default values."""
         pass
 
     def lan_key_show(self):
@@ -736,6 +945,7 @@ class Xex:
             pass
 
     def multidisc_media_ids_reset(self):
+        """To reset the multidisc media ids to their default values."""
         pass
 
     def multidisc_media_ids_show(self):
@@ -746,6 +956,7 @@ class Xex:
             pass
 
     def original_base_address_reset(self):
+        """To reset the original base address to their default values."""
         pass
 
     def original_base_address_show(self):
@@ -757,6 +968,7 @@ class Xex:
             self.original_pe_name = self.data[header[1] + 4:header[1] + 4 + name_length - 1].decode()
 
     def original_pe_name_reset(self):
+        """To reset the original PE name to their default values."""
         self.original_pe_name = ''
 
     def original_pe_name_show(self):
@@ -767,6 +979,7 @@ class Xex:
             pass
 
     def page_heap_size_and_flags_reset(self):
+        """To reset the page heap size and flags to their default values."""
         pass
 
     def page_heap_size_and_flags_show(self):
@@ -780,6 +993,7 @@ class Xex:
                 self.resource_infos.append(unpack('>8s L L', self.data[header[1] + 4 + (i * 16):header[1] + 20 + (i * 16)]))
 
     def resource_info_reset(self):
+        """To reset the resource infomation to their default values."""
         self.resource_info_count = 0
 
     def resource_info_show(self):
@@ -790,6 +1004,7 @@ class Xex:
             pass
 
     def static_libraries_reset(self):
+        """To reset the statics libraries to their default values."""
         pass
 
     def static_libraries_show(self):
@@ -800,16 +1015,18 @@ class Xex:
             self.system_flags = header[1]
 
     def system_flags_reset(self):
+        """To reset the system flags to their default values."""
         self.system_flags = 0
 
     def system_flags_show(self):
-        self.line.output('XEX_HEADER_SYSTEM_FLAGS', self.hex8(self.system_flags))
+        self.line.output_hex8('XEX_HEADER_SYSTEM_FLAGS', self.system_flags)
 
     def title_workspace_size_decode(self, header):
         if self.key(header) == const.XEX_HEADER_TITLE_WORKSPACE_SIZE:
             pass
 
     def title_workspace_size_reset(self):
+        """To reset the title workspace to their default values."""
         pass
 
     def title_workspace_size_show(self):
@@ -822,6 +1039,7 @@ class Xex:
                 tls_string, self.data[header[1]:header[1] + calcsize(tls_string)])
 
     def tls_info_reset(self):
+        """To reset the TLS information to their default values."""
         self.tls_slot_count = 0
         self.tls_raw_data_address = 0
         self.tls_data_size = 0
@@ -831,7 +1049,7 @@ class Xex:
         self.line.output('XEX_HEADER_TLS_INFO')
         self.line.indent()
         self.line.output('TLS_SLOT_COUNT', self.tls_slot_count)
-        self.line.output('TLS_RAW_DATA_ADDRESS', self.hex8(self.tls_raw_data_address))
+        self.line.output_hex8('TLS_RAW_DATA_ADDRESS', self.tls_raw_data_address)
         self.line.output('TLS_RAW_DATA_SIZE', self.tls_raw_data_size)
         self.line.output('TLS_DATA_SIZE', self.tls_data_size)
         self.line.outdent()
@@ -841,13 +1059,14 @@ class Xex:
             pass
 
     def xbox360_logo_reset(self):
+        """To reset the XBOX 360 logo to their default values."""
         pass
 
     def xbox360_logo_show(self):
         pass
 
     def decrypt_header_key(self):
-        cipher = AES.new(self.RETAIL_KEY)
+        cipher = AES.new(self.XEX_RETAIL_KEY)
         cipher.block_size = 16
         return cipher.decrypt(self.loader_file_key)
 
