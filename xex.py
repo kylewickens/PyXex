@@ -59,6 +59,31 @@ class Xex:
     # const.XEX_ENCRYPTION_NORMAL = 1
     const.XEX_ENCRYPTION_NORMAL = 1
 
+    ## The constant for the game region type NTSCU.
+    # const.XEX_GAME_REGION_NTSCU = 0x000000FF
+    const.XEX_GAME_REGION_NTSCU = 0x000000FF
+    ## The constant for the game region type NTSCJ.
+    # const.XEX_GAME_REGION_NTSCJ = 0x0000FF00
+    const.XEX_GAME_REGION_NTSCJ = 0x0000FF00
+    ## The constant for the game region type NTSCJ (Japan).
+    # const.XEX_GAME_REGION_NTSCJ_JAPAN = 0x00000100
+    const.XEX_GAME_REGION_NTSCJ_JAPAN = 0x00000100
+    ## The constant for the game region type NTSCJ (China).
+    # const.XEX_GAME_REGION_NTSCJ_CHINA = 0x00000200
+    const.XEX_GAME_REGION_NTSCJ_CHINA = 0x00000200
+    ## The constant for the game region type PAL.
+    # const.XEX_GAME_REGION_PAL = 0x00FF0000
+    const.XEX_GAME_REGION_PAL = 0x00FF0000
+    ## The constant for the game region type PAL (Australia & New Zealand).
+    # const.XEX_GAME_REGION_PAL_AU_NZ = 0x00010000
+    const.XEX_GAME_REGION_PAL_AU_NZ = 0x00010000
+    ## The constant for the game region type other.
+    # const.XEX_GAME_REGION_OTHER = 0xFF000000
+    const.XEX_GAME_REGION_OTHER = 0xFF000000
+    ## The constant for the game region type all.
+    # const.XEX_GAME_REGION_ALL = 0xFFFFFFFF
+    const.XEX_GAME_REGION_ALL = 0xFFFFFFFF
+
     ## The constant for the game rating for BBFC (British Board of Film Classification) type universal.
     # const.XEX_RATING_BBFC_UNIVERSAL = 1
     const.XEX_RATING_BBFC_UNIVERSAL = 1
@@ -303,6 +328,11 @@ class Xex:
     # const.XEX_SECTION_READONLY_DATA = 3
     const.XEX_SECTION_READONLY_DATA = 3
 
+    const.XEX_SECTION = [
+        'XEX_SECTION_CODE',
+        'XEX_SECTION_DATA',
+        'XEX_SECTION_READONLY_DATA']
+
     ## The retail encryption key.
     XEX_RETAIL_KEY = b'\x20\xB1\x85\xA5\x9D\x28\xFD\xC3\x40\x58\x3F\xBB\x08\x96\xBF\x91'
     ## The development kit encryption key.
@@ -454,7 +484,26 @@ class Xex:
         self.line.output('FILE_KEY', self.loader_file_key)
         self.line.output('EXPORT_TABLE', self.loader_export_table)
         self.line.output('HEADER_DIGEST', self.loader_header_digest)
-        self.line.output_hex8('GAME_REGIONS', self.loader_game_regions)
+
+        if self.loader_game_regions == const.XEX_GAME_REGION_NTSCU:
+            self.line.output_hex8('GAME_REGIONS', self.loader_game_regions, 'XEX_GAME_REGION_NTSCU')
+        elif self.loader_game_regions == const.XEX_GAME_REGION_NTSCJ:
+            self.line.output_hex8('GAME_REGIONS', self.loader_game_regions, 'XEX_GAME_REGION_NTSCJ')
+        elif self.loader_game_regions == const.XEX_GAME_REGION_NTSCJ_JAPAN:
+            self.line.output_hex8('GAME_REGIONS', self.loader_game_regions, 'XEX_GAME_REGION_NTSCJ_JAPAN')
+        elif self.loader_game_regions == const.XEX_GAME_REGION_NTSCJ_CHINA:
+            self.line.output_hex8('GAME_REGIONS', self.loader_game_regions, 'XEX_GAME_REGION_NTSCJ_CHINA')
+        elif self.loader_game_regions == const.XEX_GAME_REGION_PAL:
+            self.line.output_hex8('GAME_REGIONS', self.loader_game_regions, 'XEX_GAME_REGION_PAL')
+        elif self.loader_game_regions == const.XEX_GAME_REGION_PAL_AU_NZ:
+            self.line.output_hex8('GAME_REGIONS', self.loader_game_regions, 'XEX_GAME_REGION_PAL_AU_NZ')
+        elif self.loader_game_regions == const.XEX_GAME_REGION_OTHER:
+            self.line.output_hex8('GAME_REGIONS', self.loader_game_regions, 'XEX_GAME_REGION_OTHER')
+        elif self.loader_game_regions == const.XEX_GAME_REGION_ALL:
+            self.line.output_hex8('GAME_REGIONS', self.loader_game_regions, 'XEX_GAME_REGION_ALL')
+        else:
+            self.line.output_hex8('GAME_REGIONS', self.loader_game_regions, 'XEX_GAME_REGION_INVALID')
+
         self.line.output_hex8('MEDIA_FLAGS', self.loader_media_flags)
         self.line.outdent()
 
